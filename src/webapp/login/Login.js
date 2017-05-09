@@ -10,14 +10,22 @@ import {FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup} from "react
 import * as actions from "../../actions/loginController"
 class Login extends Component {
 
-
-    handleSubmit(){
-        console.log("username: "+this.refs.username.value,"password:"+this.refs.password.value)
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "LG0812",
+            password: "123456"
+        }
     }
+
+    handleSubmit() {
+        console.log("username: " + this.refs.username.value, "password:" + this.refs.password.value, this)
+        actions.login(this.refs.username.value, this.refs.password.value);
+    }
+
     render() {
-    	
-    	console.log(this)
+
+        console.log(this)
         return (<div className="fixed-center">
                 <div className="container" style={{height: "75%"}}>
                     <div className="row  align-items-center justify-content-end h-100">
@@ -59,7 +67,8 @@ class Login extends Component {
                                             <span className="fa fa-user-o w14 f14"></span>
                                         </span>
                                         <input type="text" className="form-control" placeholder="username"
-                                              ref="username" aria-describedby="basic-addon1"/>
+                                               value={this.state.username}
+                                               ref="username" aria-describedby="basic-addon1"/>
                                     </div>
                                     <br/>
                                     <div className="input-group">
@@ -67,6 +76,7 @@ class Login extends Component {
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
                                         <input type="password" className="form-control" placeholder="password"
+                                               value={this.state.password}
                                                ref="password" aria-describedby="basic-addon2"/>
                                     </div>
                                     <br/>
