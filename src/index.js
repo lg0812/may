@@ -11,7 +11,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 
 import reducers from './reducers'
 
-import App from './App';
+import App from './webapp/app/App';
 import index from "./webapp/index/Index"
 import login from "./webapp/login/Login"
 import './index.css';
