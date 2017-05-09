@@ -12,11 +12,12 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 import reducers from './reducers'
 
 import App from './App';
-import index from "./webapp/index/index"
-import login from "./webapp/login/login"
+import index from "./webapp/index/Index"
+import login from "./webapp/login/Login"
 import './index.css';
 
-//Create a history of your choosing (we're using a browser history in this case)
+// Create a history of your choosing (we're using a browser history in this
+// case)
 const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
@@ -31,17 +32,24 @@ const store = createStore(
   }),
   applyMiddleware(middleware)
 )
-//另一种写法：
-//import reducer from './reducers'
-//const store = createStore(reducer)
-//然后再reducers中先写index.js:
-//const rootReducer = combineReducers({
-//  todos
-//})
-//export default rootReducer
+// 另一种写法：
+// import reducer from './reducers'
+// const store = createStore(reducer)
+// 然后再reducers中先写index.js:
+// const rootReducer = combineReducers({
+// todos
+// })
+// export default rootReducer
 
 // Now you can dispatch navigation actions from anywhere!
 // store.dispatch(push('/foo'))
+
+/* 在控制台打印一条有样式的文字 */
+console.log("%c May %c Copyright \xa9 2017-%s",
+		'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:64px;color:#00bbee;-webkit-text-fill-color:#00bbee;-webkit-text-stroke: 1px #00bbee;',
+		"font-size:12px;color:#999999;",
+		(new Date).getFullYear());
+       
 ReactDOM.render(
   <Provider store={store}>
     { /* ConnectedRouter will use the store from Provider automatically */ }
