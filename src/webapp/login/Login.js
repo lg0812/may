@@ -6,8 +6,10 @@ import React, {Component} from 'react';
 import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import "../../plugins/font-awesome-4.7.0/css/font-awesome.css"
 import "../../index.css"
-import {FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup} from "react-bootstrap"
-import * as actions from "../../actions/loginController"
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as loginAction from "../../actions/loginController"
+import md5 from "js-md5"
 class Login extends Component {
 
     constructor(props) {
@@ -19,8 +21,17 @@ class Login extends Component {
     }
 
     handleSubmit() {
-        console.log("username: " + this.refs.username.value, "password:" + this.refs.password.value, this)
-        actions.login(this.refs.username.value, this.refs.password.value);
+        console.log("username: " + this.refs.username.value, "password:" + md5(this.refs.password.value), this)
+        this.props.loginAction.login(this.refs.username.value, md5(this.refs.password.value));
+    }
+
+
+    handlerUsername() {
+        this.state.username = this.refs.username.value;
+    }
+
+    handlerPassword() {
+        this.state.password = this.refs.password.value;
     }
 
     render() {
@@ -34,8 +45,8 @@ class Login extends Component {
                                 <div className="card-header">登录</div>
                                 <div className="card-block">
                                     {/*
-                                     * <div className="form-group">
-                                     * <label className="sr-only">用户名</label>
+                                     * <div className="form-group"> <label
+                                     * className="sr-only">用户名</label>
                                      * <input className="form-control"
                                      * placeholder="username"
                                      * name="username"/> </div> <div
@@ -51,8 +62,7 @@ class Login extends Component {
                                      * <InputGroup> <InputGroup.Addon><span
                                      * className="fa fa-user-o f14"></span>
                                      * </InputGroup.Addon> <FormControl
-                                     * type="text"
-                                     * placeholder="username"/>
+                                     * type="text" placeholder="username"/>
                                      * </InputGroup> <br/> <InputGroup>
                                      * <InputGroup.Addon> <span
                                      * className="fa fa-lock f14 w14"></span>
@@ -67,7 +77,7 @@ class Login extends Component {
                                             <span className="fa fa-user-o w14 f14"></span>
                                         </span>
                                         <input type="text" className="form-control" placeholder="username"
-                                               value={this.state.username}
+                                               value={this.state.username} onChange={this.handlerUsername.bind(this)}
                                                ref="username" aria-describedby="basic-addon1"/>
                                     </div>
                                     <br/>
@@ -76,7 +86,7 @@ class Login extends Component {
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
                                         <input type="password" className="form-control" placeholder="password"
-                                               value={this.state.password}
+                                               value={this.state.password} onChange={this.handlerPassword.bind(this)}
                                                ref="password" aria-describedby="basic-addon2"/>
                                     </div>
                                     <br/>
@@ -93,4 +103,15 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    login: state.login
+})
+
+const mapDispatchToProps = dispatch => ({
+    loginAction: bindActionCreators(loginAction, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);

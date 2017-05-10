@@ -1,15 +1,11 @@
 /**
- * 
+ *
  */
+import {combineReducers} from 'redux'
+import login from './loginReducer'
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    id: 0
-  }
-]
+const rootReducer = combineReducers({
+    login
+})
 
-export default function index(state = initialState, action){
-	return state;
-}
+export default rootReducer

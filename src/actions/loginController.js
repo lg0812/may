@@ -1,20 +1,26 @@
 /**
  *
  */
-import fetch from "isomorphic-fetch"
-export const login = (username, password) => {
+import {host} from "../config/config"
+export const login = (username, password) => (dispatch) => {
     console.log(username, password);
-    fetch("http://localhost:8080/january/login/login_in", {
+    return fetch(host + "login/login_in", {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
         body: "username=" + username + "&" + "password=" + password
-    }).then(res => {
-        console.log(res, res.ok);
-        res.json().then(data => {
-            console.log(data)
-        });
-    })
+    }).then(res => res.json()).then(data => {
+        console.log(data, data.code);
+        if (data.code == 1001) {
+            console.log("1001");
+            dispatch({
+                type: "login",
+                data
+            });
+        }
+    });
 }
+
+
