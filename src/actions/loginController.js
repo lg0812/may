@@ -10,7 +10,7 @@ export const login = (username, password) => (dispatch) => {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
-        body: "username=" + username + "&" + "password=" + password
+        body: "email=" + username + "&" + "password=" + password
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
         if (data.code == 1001) {
