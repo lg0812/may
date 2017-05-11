@@ -22,7 +22,7 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this)
+        console.log(this.props.router)
         return (
             <LoginPosition>
                 <LoginPanel {...this.props}

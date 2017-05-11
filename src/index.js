@@ -22,16 +22,13 @@ console.log("%c May %c Copyright \xa9 2016-%s",
     "font-size:12px;color:#999999;",
     (new Date).getFullYear());
 
-
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
                 <Route path="/" exact component={App}/>
                 <Route path="/index" component={index}/>
-                <Route path="/login" component={login}/>
-                <Route path="/register" component={login}/>
-                <Route path="/reset" component={login}/>
+                <Route path="/user/:type" component={login}/>
             </div>
         </ConnectedRouter>
     </Provider>,
