@@ -69,4 +69,27 @@ export const register = (username, password, email, verification, call) => (disp
     });
 }
 
+export const reset = (email, password, verification, call) => (dispatch) => {
+    console.log(email);
+    fetch(host + "login/reset_pw", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: "password=" + password + "&email=" + email + "&verification=" + verification
+    }).then(res => res.json()).then(data => {
+        console.log(data, data.code);
+        if (data.code == 1001) {
+            console.log("1001");
+            dispatch({
+                type: "reset",
+                data
+            });
+
+            call(data);
+        }
+    });
+}
+
 

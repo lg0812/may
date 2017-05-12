@@ -1,7 +1,6 @@
 /**
- *
+ * 
  */
-
 import React, {Component} from 'react';
 import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import "../../plugins/font-awesome-4.7.0/css/font-awesome.css"
@@ -16,6 +15,9 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            username: this.props.location.state ? (this.props.location.state.email ? this.props.location.state.email : "") : ""
+        }
     }
 
     handleSubmit(username, password) {
@@ -25,7 +27,8 @@ class Login extends Component {
 
     callback(data) {
         console.log(data);
-        this.props.history.push("/index");
+        if (data.code == 1001)
+            this.props.history.push("/index");
     }
 
     redirect() {
@@ -33,12 +36,12 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this);
+        console.log("------------->",this,this.state.username);
         switch (this.props.match.params.type) {
             case "login":
                 return (
                     <LoginPosition>
-                        <LoginPanel {...this.props}
+                        <LoginPanel {...this.props} username={this.state.username}
                                     submit={(name, pass) => this.handleSubmit(name, pass)}/>
                     </LoginPosition>
                 );
@@ -97,14 +100,12 @@ class LoginPosition extends Component {
     }
 }
 
-
 class LoginPanel extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            username: "LG0812",
-            password: "123456"
+        this.state={
+        		username : this.props.username
         }
     }
 
@@ -131,28 +132,28 @@ class LoginPanel extends Component {
                 <div className="card-header">登录</div>
                 <div className="card-block">
                     {/*
-                     * <div className="form-group"> <label
-                     * className="sr-only">用户名</label> <input
-                     * className="form-control" placeholder="username"
-                     * name="username"/> </div> <div className="form-group">
-                     * <label className="sr-only">密码</label> <input
-                     * type="password" className="form-control"
-                     * placeholder="password" name="password"/> </div>
-                     */}
+						 * <div className="form-group"> <label
+						 * className="sr-only">用户名</label> <input
+						 * className="form-control" placeholder="username"
+						 * name="username"/> </div> <div className="form-group">
+						 * <label className="sr-only">密码</label> <input
+						 * type="password" className="form-control"
+						 * placeholder="password" name="password"/> </div>
+						 */}
                     {/*
-                     *
-                     * <InputGroup> <InputGroup.Addon><span className="fa
-                     * fa-user-o f14"></span> </InputGroup.Addon>
-                     * <FormControl type="text" placeholder="username"/>
-                     * </InputGroup> <br/> <InputGroup> <InputGroup.Addon>
-                     * <span className="fa fa-lock f14 w14"></span>
-                     * </InputGroup.Addon> <FormControl type="password"
-                     * placeholder="password"/> </InputGroup> <br/>
-                     */}
+						 * 
+						 * <InputGroup> <InputGroup.Addon><span className="fa
+						 * fa-user-o f14"></span> </InputGroup.Addon>
+						 * <FormControl type="text" placeholder="username"/>
+						 * </InputGroup> <br/> <InputGroup> <InputGroup.Addon>
+						 * <span className="fa fa-lock f14 w14"></span>
+						 * </InputGroup.Addon> <FormControl type="password"
+						 * placeholder="password"/> </InputGroup> <br/>
+						 */}
                     <form>
                         <div className="input-group">
                                         <span className="input-group-addon" id="basic-addon1">
-                                            <span className="fa fa-user-o w14 f14"></span>
+                                            <span className="fa fa-envelope-o w14 f14"></span>
                                         </span>
                             <input type="text" className="form-control" placeholder="请使用邮箱号登录"
                                    value={this.state.username} onChange={this.handlerUsername.bind(this)}
@@ -163,8 +164,7 @@ class LoginPanel extends Component {
                                         <span className="input-group-addon" id="basic-addon2">
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
-                            <input type="password" className="form-control" placeholder="password"
-                                   value={this.state.password} onChange={this.handlerPassword.bind(this)}
+                            <input type="password" className="form-control" placeholder="密码"
                                    ref="password" aria-describedby="basic-addon2"/>
                         </div>
 
@@ -203,6 +203,9 @@ class RegisterPanel extends Component {
         this.props.loginAction.register(this.refs.r_username.value, this.refs.r_password.value,
             this.refs.r_email.value, this.refs.r_code.value, data => {
                 console.log(data)
+                if (data.code == 1001) {
+                    this.props.history.push("/user/login", {email: data.result.email});
+                }
             }
         )
         ;
@@ -227,7 +230,7 @@ class RegisterPanel extends Component {
                                         <span className="input-group-addon" id="r_basic-addon1">
                                             <span className="fa fa-user-o w14 f14"></span>
                                         </span>
-                            <input type="text" className="form-control" placeholder="username"
+                            <input type="text" className="form-control" placeholder="昵称"
                                    ref="r_username" aria-describedby="r_basic-addon1"/>
                         </div>
                         <br/>
@@ -235,30 +238,36 @@ class RegisterPanel extends Component {
                                         <span className="input-group-addon" id="r_asic-addon2">
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
-                            <input type="password" className="form-control" placeholder="password"
+                            <input type="password" className="form-control" placeholder="密码"
                                    ref="r_password" aria-describedby="r_basic-addon2"/>
                         </div>
                         <br/>
                         <div className="input-group">
                                         <span className="input-group-addon" id="r_asic-addon4">
-                                        <span className="fa fa-lock w14 f14"></span>
+                                        <span className="fa fa-envelope-o w14 f14"></span>
                                         </span>
-                            <input type="email" className="form-control" placeholder="email"
+                            <input type="email" className="form-control" placeholder="邮箱"
                                    ref="r_email" aria-describedby="r_basic-addon4"/>
                         </div>
                         <br/>
                         <div className="input-group">
-                            <input type="text" className="form-control" placeholder="text"
+                            <input type="text" className="form-control" placeholder="验证码"
                                    ref="r_code" aria-describedby="r_basic-addon3"/>
                             <span className="input-group-btn" id="r_basic-addon3">
                                          <button className="btn btn-secondary" type="button"
                                                  onClick={this.sendMail.bind(this)}>获取验证码</button>
                             </span>
                         </div>
-                        <br/>
                     </form>
+                    <div className="row">
+                        <div className="col">
+                            <div className="d-flex justify-content-between w-100">
+                                <Link to="/user/login">返回登录</Link>
+                            </div>
+                        </div>
+                    </div>
                     <button className="btn btn-primary w-100" onClick={this.register.bind(this)}>
-                        login in
+                        register
                     </button>
                 </div>
             </div>
@@ -275,7 +284,19 @@ class ResetPanel extends Component {
 
     reset() {
         console.log(this)
-        this.props.submit(this.refs.username.value, md5(this.refs.password.value));
+        this.props.loginAction.reset(this.refs.re_username.value, md5(this.refs.re_password.value), this.refs.re_code.value, data => {
+            console.log(data);
+            if (data.code == 1001) {
+                this.props.history.push("/user/login", {email: data.result.email});
+            }
+        });
+    }
+
+    sendMail() {
+        console.log(this)
+        this.props.loginAction.email(this.refs.re_username.value, data => {
+            console.log(data)
+        });
     }
 
     render() {
@@ -289,7 +310,7 @@ class ResetPanel extends Component {
                                         <span className="input-group-addon" id="re_basic-addon1">
                                             <span className="fa fa-user-o w14 f14"></span>
                                         </span>
-                            <input type="text" className="form-control" placeholder="请使用邮箱号登录"
+                            <input type="text" className="form-control" placeholder="邮箱"
                                    ref="re_username" aria-describedby="re_basic-addon1"/>
                         </div>
                         <br/>
@@ -297,24 +318,32 @@ class ResetPanel extends Component {
                                         <span className="input-group-addon" id="re_asic-addon2">
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
-                            <input type="password" className="form-control" placeholder="password"
+                            <input type="password" className="form-control" placeholder="密码"
                                    ref="re_password" aria-describedby="re_basic-addon2"/>
                         </div>
                         <br/>
                         <div className="input-group">
-                                        <span className="input-group-addon" id="re_basic-addon3">
-                                        <span className="fa fa-lock w14 f14"></span>
-                                        </span>
-                            <input type="text" className="form-control" placeholder="password"
-                                   ref="re_email" aria-describedby="re_basic-addon3"/>
+                            <input type="text" className="form-control" placeholder="验证码"
+                                   ref="re_code" aria-describedby="re_basic-addon3"/>
+                            <span className="input-group-btn" id="re_basic-addon3">
+                                         <button className="btn btn-secondary" type="button"
+                                                 onClick={this.sendMail.bind(this)}>获取验证码</button>
+                            </span>
                         </div>
-                        <br/>
                     </form>
+                    <div className="row">
+                        <div className="col">
+                            <div className="d-flex justify-content-between w-100">
+                                <Link to="/user/login">返回登录</Link>
+                            </div>
+                        </div>
+                    </div>
                     <button className="btn btn-primary w-100" onClick={this.reset.bind(this)}>
-                        login in
+                        reset password
                     </button>
                 </div>
             </div>
         );
     }
 }
+
