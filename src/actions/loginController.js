@@ -19,9 +19,8 @@ export const login = (username, password, call) => (dispatch) => {
                 type: "login",
                 data
             });
-
-            call(data);
         }
+        call(data);
     });
 }
 export const email = (email, call) => (dispatch) => {
@@ -41,9 +40,8 @@ export const email = (email, call) => (dispatch) => {
                 type: "email",
                 data
             });
-
-            call(data);
         }
+        call(data);
     });
 }
 export const register = (username, password, email, verification, call) => (dispatch) => {
@@ -63,9 +61,8 @@ export const register = (username, password, email, verification, call) => (disp
                 type: "email",
                 data
             });
-
-            call(data);
         }
+        call(data);
     });
 }
 
@@ -86,9 +83,8 @@ export const reset = (email, password, verification, call) => (dispatch) => {
                 type: "reset",
                 data
             });
-
-            call(data);
         }
+        call(data);
     });
 }
 

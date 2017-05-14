@@ -1,20 +1,102 @@
 body {
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
 .fixed-center {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	z-index: 1030;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-.f14{
-	font-size: 14px !important;
+.f14 {
+    font-size: 14px !important;
 }
 
-.w14{
-	width:14px;
+.w14 {
+    width: 14px;
+}
+
+.p-absolute-right {
+    position: absolute;
+    top: 0px;
+    z-index: 100;
+    line-height: 34px;
+    right: 0px;
+    padding-right: 10px;
+}
+
+.p-absolute-left {
+    position: absolute;
+    top: 0px;
+    z-index: 100;
+    line-height: 34px;
+    left: -16px;
+    padding-right: 10px;
+}
+
+
+.pp{
+    padding-right: 20px;
+    right: 90px;
+}
+
+.p-r {
+    position: relative;
+}
+
+.align-items-center {
+    -webkit-box-align: center !important;
+    -webkit-align-items: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.w-25 {
+    width: 25% !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.w-75 {
+    width: 75% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.h-25 {
+    height: 25% !important;
+}
+
+.h-50 {
+    height: 50% !important;
+}
+
+.h-75 {
+    height: 75% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.p-f {
+    padding: 4px 8px;
 }

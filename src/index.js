@@ -28,10 +28,12 @@ ReactDOM.render(
             <div>
                 <Route path="/" exact component={App}/>
                 <Route path="/index" component={index}/>
-                <Route path="/user/:type" component={login}/>
+                <Route path="/user" exact component={login}/>
             </div>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 )
+
+
 
