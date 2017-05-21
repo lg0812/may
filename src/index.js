@@ -4,9 +4,7 @@ import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 
-import {Router, Route, Redirect} from 'react-router'
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
+import {Router, Route, Redirect, BrowserRouter} from 'react-router-dom'
 import reducers from './reducers'
 import thunk from "redux-thunk"
 import logger from "redux-logger"
@@ -15,7 +13,6 @@ import index from "./webapp/index/Index"
 import login from "./webapp/login/Login"
 import './index.css';
 const store = applyMiddleware(thunk, logger)(createStore)(reducers);
-const history = createHistory()
 /* 在控制台打印一条有样式的文字 */
 console.log("%c May %c Copyright \xa9 2016-%s",
     'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:64px;color:#00bbee;-webkit-text-fill-color:#00bbee;-webkit-text-stroke: 1px #00bbee;',
@@ -24,16 +21,18 @@ console.log("%c May %c Copyright \xa9 2016-%s",
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <BrowserRouter >
             <div>
                 <Route path="/" exact component={App}/>
                 <Route path="/index" component={index}/>
                 <Route path="/user" exact component={login}/>
             </div>
-        </ConnectedRouter>
-    </Provider>,
+        </BrowserRouter>
+    </Provider >,
     document.getElementById('root')
 )
+
+
 
 
 
