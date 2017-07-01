@@ -21,7 +21,7 @@ const store = createStore(
 console.log("%c May %c Copyright \xa9 2016-%s",
     'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:64px;color:#00bbee;-webkit-text-fill-color:#00bbee;-webkit-text-stroke: 1px #00bbee;',
     "font-size:12px;color:#999999;",
-    (new Date).getFullYear());
+    (new Date()).getFullYear());
 
 ReactDOM.render(
     <Provider store={store}>
