@@ -2,7 +2,7 @@
  *
  */
 import React, {Component} from 'react';
-import "../../plugins/bootstrap-3.3.7/dist/css/bootstrap.css"
+import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import "../../plugins/font-awesome-4.7.0/css/font-awesome.css"
 import "../../index.css"
 import {bindActionCreators} from 'redux'

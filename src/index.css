@@ -37,8 +37,7 @@ body {
     padding-right: 10px;
 }
 
-
-.pp{
+.pp {
     padding-right: 20px;
     right: 90px;
 }
@@ -99,4 +98,34 @@ body {
 
 .p-f {
     padding: 4px 8px;
+}
+
+/*****************************************************************/
+html, body {
+    height: 100%;
+}
+
+.position-abs {
+    position: absolute;
+}
+
+.tblr {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+}
+
+.menus {
+    width: 200px;
+    border: 1px solid #292b2c;
+    background-color: red;
+}
+
+.fixed-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
 }
