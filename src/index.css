@@ -105,6 +105,32 @@ html, body {
     height: 100%;
 }
 
+.over-flow {
+    overflow: hidden;
+}
+
+.over-flow-y {
+    overflow-y: scroll;
+}
+
+.over-flow-y::-webkit-scrollbar {
+    width: 2px;
+}
+
+.over-flow-y::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+.flex-grow0 {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.flex-grow1 {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
 .position-abs {
     position: absolute;
 }
@@ -120,7 +146,6 @@ html, body {
 .menus {
     width: 200px;
     border: 1px solid #292b2c;
-    background-color: red;
 }
 
 .fixed-left {

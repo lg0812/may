@@ -12,20 +12,22 @@ class Menus extends Component {
 
     render() {
         return (
-            <ul className="nav flex-column menus h-100">
-                <li className="nav-item">
-                    <a className="nav-link active" href="#">Active</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
+            <div className="menus border-left-0 border-top-0 border-bottom-0">
+                <ul className="nav flex-column">
+                    <li className="nav-item">
+                        <a className="nav-link active" href="#">Active</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">Link</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">Link</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
         );
     }
 }

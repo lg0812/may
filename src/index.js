@@ -26,20 +26,27 @@ console.log("%c yltfy %c Copyright \xa9 2016-%s",
     "font-size:12px;color:#999999;",
     (new Date()).getFullYear());
 
-
+const Container = () => (
+    <div className="w-100 over-flow-y">
+    </div>
+)
 const frame = () => (
-    <div>
-        <Header/>
-        <div className="position-abs tblr">
+    <div className="d-flex flex-column h-100">
+        <div className="flex-grow0">
+            <Header/>
+        </div>
+        <div className="flex-grow1 over-flow d-flex flex-row">
             <Menus/>
+            <Container/>
         </div>
     </div>
 )
 
+
 ReactDOM.render(
     <Provider store={store}>
         <Router >
-            <div>
+            <div className="h-100">
                 <Route path="/" exact component={frame}/>
                 <Route path="/index" component={index}/>
                 <Route path="/user" exact component={login}/>
