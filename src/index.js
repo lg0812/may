@@ -6,12 +6,12 @@ import {Route, BrowserRouter as Router} from 'react-router-dom'
 import reducers from './reducers'
 import thunk from "redux-thunk"
 import logger from "redux-logger"
-import app from './webapp/app/App';
-import index from "./webapp/index/Index"
+import App from './webapp/app/App';
 import Header from "./webapp/header/Header"
-import login from "./webapp/login/Login"
+import ErrorPage from "./webapp/error/Error"
+import Login from "./webapp/login/Login"
 import Menus from "./webapp/header/Menus"
-
+import AuthUrls from "./webapp/dispatch/Dispatch";
 import './index.css';
 // const store = applyMiddleware(thunk, logger)(createStore)(reducers);
 
@@ -26,31 +26,38 @@ console.log("%c yltfy %c Copyright \xa9 2016-%s",
     "font-size:12px;color:#999999;",
     (new Date()).getFullYear());
 
-const Container = () => (
-    <div className="w-100 over-flow-y">
-    </div>
-)
-const frame = () => (
-    <div className="d-flex flex-column h-100">
-        <div className="flex-grow0">
-            <Header/>
-        </div>
-        <div className="flex-grow1 over-flow d-flex flex-row">
-            <Menus/>
-            <Container/>
-        </div>
-    </div>
-)
+class Frame extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="flex-grow1 over-flow d-flex flex-row">
+                <Menus/>
+                <div className="w-100 over-flow-y">
+                    <AuthUrls {...this.props} url={this.props.match.params.type}/>
+                </div>
+            </div>
+        )
+    }
+}
 
 
 ReactDOM.render(
     <Provider store={store}>
         <Router >
             <div className="h-100">
-                <Route path="/" exact component={frame}/>
-                <Route path="/index" component={index}/>
-                <Route path="/user" exact component={login}/>
-                <Route path="/menus" exact component={Menus}/>
+                <div className="d-flex flex-column h-100">
+                    <div className="flex-grow0">
+                        <Header/>
+                    </div>
+                    <Route path="/" exact component={App}/>
+                    <Route path="/auth/:type" component={Frame}/>
+                    <Route path="/home" exact component={Login}/>
+                    <Route path="/menus" exact component={Menus}/>
+                    <Route path="/errorPage" exact component={ErrorPage}/>
+                </div>
             </div>
         </Router>
     </Provider >,

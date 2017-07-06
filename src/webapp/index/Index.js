@@ -13,6 +13,8 @@ class Index extends Component {
                 <button className="btn btn-link">index</button>
                 {ele}
                 {ele}
+
+                index    >>>>>>>>>>>>>>>
             </div>
         );
     }
