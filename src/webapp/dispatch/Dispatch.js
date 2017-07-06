@@ -4,7 +4,8 @@
 import React, {Component} from 'react';
 import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import Index from "../index/Index"
-import Login from "../login/Login"
+import {Login} from "../login"
+import {Basic} from "../container"
 class Dispatch extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +17,8 @@ class Dispatch extends Component {
                 return (<Index/>);
             case "user":
                 return (<Login/>);
+            case "basic":
+                return (<Basic/>)
             default :
                 return (<div></div>);
         }

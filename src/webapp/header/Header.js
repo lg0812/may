@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react';
 import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
-import headerIcon from "../source/night.png"
+import headerIcon from "../source/night.png";
+import {Link} from "react-router-dom"
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -23,7 +24,7 @@ class Header extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+            <nav className="navbar navbar-toggleable-md navbar-light bg-info">
                 <a className="navbar-brand" href="#">
                     <img src={headerIcon} width="30" height="30" alt=""/>
                 </a>
@@ -38,30 +39,30 @@ class Header extends Component {
                      id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <Link className="nav-link" to="/home">首页 <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <Link className="nav-link" to="/auth/index">控制台</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
+                            <Link className="nav-link" to="/news">最新活动</Link>
                         </li>
                         <li className={"nav-item dropdown " + (this.state.show ? "show" : "")}>
                             <a className="nav-link dropdown-toggle"
                                id="navbarDropdownMenuLink" onClick={() => this.open_close()}
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
+                                更多. . .
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <Link className="dropdown-item" to="/help">帮助</Link>
+                                <Link className="dropdown-item" to="/about">关于此网站</Link>
                             </div>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <Link to="/login">登陆</Link>
                     </form>
                 </div>
             </nav>

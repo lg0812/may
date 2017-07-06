@@ -9,12 +9,12 @@ import logger from "redux-logger"
 import App from './webapp/app/App';
 import Header from "./webapp/header/Header"
 import ErrorPage from "./webapp/error/Error"
-import Login from "./webapp/login/Login"
+import * as auth from "./webapp/login"
 import Menus from "./webapp/header/Menus"
+import * as con from "./webapp/container"
 import AuthUrls from "./webapp/dispatch/Dispatch";
 import './index.css';
 // const store = applyMiddleware(thunk, logger)(createStore)(reducers);
-
 const store = createStore(
     reducers,
     applyMiddleware(thunk, logger)
@@ -54,8 +54,14 @@ ReactDOM.render(
                     </div>
                     <Route path="/" exact component={App}/>
                     <Route path="/auth/:type" component={Frame}/>
-                    <Route path="/home" exact component={Login}/>
                     <Route path="/menus" exact component={Menus}/>
+                    <Route path="/news" exact component={con.News}/>
+                    <Route path="/news" exact component={con.News}/>
+                    <Route path="/help" exact component={con.Help}/>
+                    <Route path="/about" exact component={con.About}/>
+                    <Route path="/login" exact component={auth.Login}/>
+                    <Route path="/reset" exact component={auth.Reset}/>
+                    <Route path="/register" exact component={auth.Register}/>
                     <Route path="/errorPage" exact component={ErrorPage}/>
                 </div>
             </div>
