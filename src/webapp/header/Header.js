@@ -2,9 +2,9 @@
  * Created by LG0812 on 2017/7/4.
  */
 import React, {Component} from 'react';
-import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import headerIcon from "../source/night.png";
-import {Link} from "react-router-dom"
+import {urls} from "../../utils/urls"
+import {Navbar, Nav, NavDropdown, NavItem, MenuItem} from "react-bootstrap"
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -14,58 +14,41 @@ class Header extends Component {
         }
     }
 
-    open_close() {
-        this.setState({show: !this.state.show});
-    }
-
-    collapse() {
-        this.setState({collapse: !this.state.collapse});
+    dispatchUrls(url) {
+        console.log(url, this.props.router);
+        this.props.history.push(url);
     }
 
     render() {
         return (
-            <nav className="navbar navbar-toggleable-md navbar-light bg-info">
-                <a className="navbar-brand" href="#">
-                    <img src={headerIcon} width="30" height="30" alt=""/>
-                </a>
-                <button className={"navbar-toggler navbar-toggler-right " + (this.state.collapse ? "collapsed" : "")}
-                        type="button" data-toggle="collapse" onClick={() => this.collapse()}
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-
-                <div className={"collapse navbar-collapse " + (this.state.collapse ? "show" : "")}
-                     id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <Link className="nav-link" to="/home">首页 <span className="sr-only">(current)</span></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/auth/index">控制台</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/news">最新活动</Link>
-                        </li>
-                        <li className={"nav-item dropdown " + (this.state.show ? "show" : "")}>
-                            <a className="nav-link dropdown-toggle"
-                               id="navbarDropdownMenuLink" onClick={() => this.open_close()}
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                更多. . .
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link className="dropdown-item" to="/help">帮助</Link>
-                                <Link className="dropdown-item" to="/about">关于此网站</Link>
-                            </div>
-                        </li>
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        <Link to="/login">登陆</Link>
-                    </form>
-                </div>
-            </nav>
+            <Navbar className="border-radius0 mg0" inverse collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a className="pd10"><img onClick={() => this.dispatchUrls(urls.public_index)} src={headerIcon}
+                                                 width="30" height="30" alt=""/></a>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                    <Nav>
+                        <NavItem eventKey={1} onClick={() => this.dispatchUrls(urls.public_index)}>首页</NavItem>
+                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.private_index)}>控制台</NavItem>
+                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.public_news)}>最新活动</NavItem>
+                        <NavDropdown eventKey={3} title="更多..." id="basic-nav-dropdown">
+                            <MenuItem eventKey={3.1} onClick={() => this.dispatchUrls(urls.public_help)}>帮助</MenuItem>
+                            <MenuItem eventKey={3.2}
+                                      onClick={() => this.dispatchUrls(urls.public_about)}>关于此网站</MenuItem>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav pullRight>
+                        <NavDropdown eventKey={3} title="未定义" id="basic-nav-dropdown">
+                            <MenuItem eventKey={3.1}>menu0</MenuItem>
+                            <MenuItem eventKey={3.2}>menu1</MenuItem>
+                        </NavDropdown>
+                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.public_login)}>登陆</NavItem>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         );
     }
 }

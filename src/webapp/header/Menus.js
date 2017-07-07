@@ -2,7 +2,6 @@
  * Created by LG0812 on 2017/7/4.
  */
 import React, {Component} from 'react';
-import "../../plugins/bootstrap-4.0.0-alpha.6/dist/css/bootstrap.css"
 import {Link} from "react-router-dom"
 class Menus extends Component {
     constructor(props) {
@@ -30,6 +29,7 @@ class Menus extends Component {
     }
 
     render() {
+        console.log(this, "menus>>>>>>>>>>>>>>>>>")
         return (
             <div className="menus border-left-0 border-top-0 border-bottom-0 text-center">
                 <ul className="nav flex-column">

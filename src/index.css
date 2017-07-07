@@ -85,17 +85,6 @@ body {
     height: 100% !important;
 }
 
-.d-flex {
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
 .p-f {
     padding: 4px 8px;
 }
@@ -103,6 +92,33 @@ body {
 /*****************************************************************/
 html, body {
     height: 100%;
+}
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.flex-row {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: column !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .over-flow {
@@ -133,6 +149,51 @@ html, body {
 
 .position-abs {
     position: absolute;
+}
+
+.pd10 {
+    padding: 10px !important;
+}
+
+.mg0 {
+    margin: 0px;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+.border-top-0 {
+    border-top: 0 !important;
+}
+
+.border-right-0 {
+    border-right: 0 !important;
+}
+
+.border-bottom-0 {
+    border-bottom: 0 !important;
+}
+
+.border-left-0 {
+    border-left: 0 !important;
+}
+
+.border-radius0 {
+    border-radius: 0px !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.footer-bgc {
+    background-color: #222;
+    border-color: #080808;
+}
+
+.fcf {
+    color: #fff;
 }
 
 .tblr {
