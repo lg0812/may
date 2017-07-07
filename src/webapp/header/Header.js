@@ -4,7 +4,8 @@
 import React, {Component} from 'react';
 import headerIcon from "../source/night.png";
 import {urls} from "../../utils/urls"
-import {Navbar, Nav, NavDropdown, NavItem, MenuItem} from "react-bootstrap"
+import {Navbar, Nav, NavDropdown, NavItem, MenuItem} from "react-bootstrap";
+import {connect} from 'react-redux'
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -20,6 +21,7 @@ class Header extends Component {
     }
 
     render() {
+        console.log("header---->", this)
         return (
             <Navbar className="border-radius0 mg0" inverse collapseOnSelect>
                 <Navbar.Header>
@@ -31,25 +33,42 @@ class Header extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} onClick={() => this.dispatchUrls(urls.public_index)}>首页</NavItem>
-                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.private_index)}>控制台</NavItem>
-                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.public_news)}>最新活动</NavItem>
-                        <NavDropdown eventKey={3} title="更多..." id="basic-nav-dropdown">
-                            <MenuItem eventKey={3.1} onClick={() => this.dispatchUrls(urls.public_help)}>帮助</MenuItem>
+                        <NavItem eventKey={1}
+                                 onClick={() => this.dispatchUrls(urls.public_index)}>{this.props.lang.home}</NavItem>
+                        <NavItem eventKey={2}
+                                 onClick={() => this.dispatchUrls(urls.private_index)}>{this.props.lang.consoles}</NavItem>
+                        <NavItem eventKey={2}
+                                 onClick={() => this.dispatchUrls(urls.public_news)}>{this.props.lang.latest_activity}</NavItem>
+                        <NavDropdown eventKey={3} title={this.props.lang.more} id="basic-nav-dropdown">
+                            <MenuItem eventKey={3.1}
+                                      onClick={() => this.dispatchUrls(urls.public_help)}>{this.props.lang.help}</MenuItem>
                             <MenuItem eventKey={3.2}
-                                      onClick={() => this.dispatchUrls(urls.public_about)}>关于此网站</MenuItem>
+                                      onClick={() => this.dispatchUrls(urls.public_about)}>{this.props.lang.about}</MenuItem>
                         </NavDropdown>
                     </Nav>
                     <Nav pullRight>
-                        <NavDropdown eventKey={3} title="未定义" id="basic-nav-dropdown">
-                            <MenuItem eventKey={3.1}>menu0</MenuItem>
-                            <MenuItem eventKey={3.2}>menu1</MenuItem>
+                        <NavDropdown eventKey={3} title={this.props.lang.language} id="basic-nav-dropdown">
+                            <MenuItem eventKey={3.1}
+                                      onClick={() => this.props.setLocate("zh_CN")}>简体中文</MenuItem>
+                            <MenuItem eventKey={3.2}
+                                      onClick={() => this.props.setLocate("en_US")}>English</MenuItem>
                         </NavDropdown>
-                        <NavItem eventKey={2} onClick={() => this.dispatchUrls(urls.public_login)}>登陆</NavItem>
+                        <NavItem eventKey={2}
+                                 onClick={() => this.dispatchUrls(urls.public_login)}>{this.props.lang.login}</NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         );
     }
 }
-export default Header;
+
+const mapStateToProps = state => ({
+    lang: state.lang,
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header)
