@@ -45,22 +45,28 @@ class Controls extends Component {
 
 class Public extends Component {
     render() {
-        return (    <div className="flex-grow1 over-flow d-flex flex-row">
-            <Route path="/public/index" exact component={App}/>
-            <Route path="/public/menus" exact component={Menus}/>
-            <Route path="/public/news" exact component={con.News}/>
-            <Route path="/public/help" exact component={con.Help}/>
-            <Route path="/public/about" exact component={con.About}/>
-            <Route path="/public/login" exact component={user.Login}/>
-            <Route path="/public/reset" exact component={user.Reset}/>
-            <Route path="/public/register" exact component={user.Register}/>
-            <Route path="/public/errorPage" exact component={ErrorPage}/>
-        </div>)
+        return (
+            <div className="flex-grow1 over-flow d-flex flex-row">
+                <Route path="/public/index" exact component={App}/>
+                <Route path="/public/menus" exact component={Menus}/>
+                <Route path="/public/news" exact component={con.News}/>
+                <Route path="/public/help" exact component={con.Help}/>
+                <Route path="/public/about" exact component={con.About}/>
+                <Route path="/public/login" exact component={user.Login}/>
+                <Route path="/public/reset" exact component={user.Reset}/>
+                <Route path="/public/register" exact component={user.Register}/>
+                <Route path="/public/errorPage" exact component={ErrorPage}/>
+            </div>)
     }
 }
 
 
 class Entry extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     render() {
         return (<div className="h-100">
             <div className="d-flex flex-column h-100">
