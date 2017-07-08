@@ -65,7 +65,6 @@ class Public extends Component {
     }
 }
 
-
 class Entry extends Component {
     constructor(props) {
         super(props);
