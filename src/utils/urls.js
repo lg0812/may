@@ -2,17 +2,17 @@
  * Created by LG0812 on 2017/7/7.
  */
 const urls = {
-    "private_index": "/private/index",
-    "private_user": "/private/user",
-    "private_basic": "/private/basic",
+    "private_index": "/january/private/index",
+    "private_user": "/january/private/user",
+    "private_basic": "/january/private/basic",
 
-    "public_index": "/",
-    "public_news": "/public/news",
-    "public_help": "/public/help",
-    "public_about": "/public/about",
-    "public_login": "/public/login",
-    "public_reset": "/public/reset",
-    "public_register": "/public/register",
+    "public_index": "/january/",
+    "public_news": "/january/public/news",
+    "public_help": "/january/public/help",
+    "public_about": "/january/public/about",
+    "public_login": "/january/public/login",
+    "public_reset": "/january/public/reset",
+    "public_register": "/january/public/register",
 }
 
 export {urls};
