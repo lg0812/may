@@ -6,7 +6,7 @@ const urls = {
     "private_user": "/private/user",
     "private_basic": "/private/basic",
 
-    "public_index": "/public/index",
+    "public_index": "/",
     "public_news": "/public/news",
     "public_help": "/public/help",
     "public_about": "/public/about",

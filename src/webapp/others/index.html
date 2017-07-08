@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="redirect(this)">跳转</button>
+<script>
+    function redirect(this_) {
+        console.log("other.index.html")
+        parent.location.href = "http://localhost:3000/private/index";
+    }
+</script>
+</body>
+</html>
