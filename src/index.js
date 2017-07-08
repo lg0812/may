@@ -17,6 +17,7 @@ import * as con from "./webapp/container"
 import Index from "./webapp/index/Index"
 import {withRouter} from "react-router"
 import './index.css';
+import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
 import {setLocate} from "./actions/langController"
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'

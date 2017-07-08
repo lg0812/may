@@ -46,13 +46,6 @@ body {
     position: relative;
 }
 
-.align-items-center {
-    -webkit-box-align: center !important;
-    -webkit-align-items: center !important;
-    -ms-flex-align: center !important;
-    align-items: center !important;
-}
-
 .w-25 {
     width: 25% !important;
 }
@@ -101,22 +94,6 @@ html, body {
     display: flex !important;
 }
 
-.flex-row {
-    -webkit-box-orient: horizontal !important;
-    -webkit-box-direction: normal !important;
-    -webkit-flex-direction: row !important;
-    -ms-flex-direction: row !important;
-    flex-direction: row !important;
-}
-
-.flex-column {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-    -webkit-flex-direction: column !important;
-    -ms-flex-direction: column !important;
-    flex-direction: column !important;
-}
-
 .pointer {
     cursor: pointer;
 }
@@ -145,6 +122,43 @@ html, body {
 .flex-grow1 {
     flex-grow: 1;
     flex-shrink: 1;
+}
+
+.flex-row {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: column !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.justify-content-end {
+    -webkit-box-pack: end !important;
+    -webkit-justify-content: flex-end !important;
+    -ms-flex-pack: end !important;
+    justify-content: flex-end !important;
+}
+
+.align-items-center {
+    -webkit-box-align: center !important;
+    -webkit-align-items: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.align-items-end {
+    -webkit-box-align: end !important;
+    -webkit-align-items: flex-end !important;
+    -ms-flex-align: end !important;
+    align-items: flex-end !important;
 }
 
 .position-abs {
@@ -214,4 +228,12 @@ html, body {
     left: 0;
     top: 0;
     bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .col-sm-7-mine {
+        width: 460px !important;
+        margin-right: 120px;
+        margin-bottom: 150px;
+    }
 }
