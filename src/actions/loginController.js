@@ -1,10 +1,10 @@
 /**
  *
  */
-import {host} from "../config/config"
-export const login = (username, password, call) => (dispatch) => {
+import {host, requestMapping} from "../config/config"
+export const login = (username, password, call) => {
     console.log(username, password);
-    fetch(host + "login/login_in", {
+    fetch(host + requestMapping.login, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -13,19 +13,12 @@ export const login = (username, password, call) => (dispatch) => {
         body: "email=" + username + "&" + "password=" + password
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
-        if (data.code == 1001) {
-            console.log("1001");
-            dispatch({
-                type: "login",
-                data
-            });
-        }
         call(data);
     });
 }
-export const email = (email, call) => (dispatch) => {
+export const email = (email, call) => {
     console.log(email);
-    fetch(host + "login/send_email", {
+    fetch(host + requestMapping.send_email, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -33,20 +26,12 @@ export const email = (email, call) => (dispatch) => {
         },
         body: "email=" + email
     }).then(res => res.json()).then(data => {
-        console.log(data, data.code);
-        if (data.code == 1001) {
-            console.log("1001");
-            dispatch({
-                type: "email",
-                data
-            });
-        }
         call(data);
     });
 }
-export const register = (username, password, email, verification, call) => (dispatch) => {
+export const register = (username, password, email, verification, call) => {
     console.log(email);
-    fetch(host + "login/register", {
+    fetch(host + requestMapping.register, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -55,20 +40,13 @@ export const register = (username, password, email, verification, call) => (disp
         body: "username=" + username + "&password=" + password + "&email=" + email + "&verification=" + verification
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
-        if (data.code == 1001) {
-            console.log("1001");
-            dispatch({
-                type: "email",
-                data
-            });
-        }
         call(data);
     });
 }
 
-export const reset = (email, password, verification, call) => (dispatch) => {
+export const reset = (email, password, verification, call) => {
     console.log(email);
-    fetch(host + "login/reset_pw", {
+    fetch(host + requestMapping.reset, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -77,13 +55,6 @@ export const reset = (email, password, verification, call) => (dispatch) => {
         body: "password=" + password + "&email=" + email + "&verification=" + verification
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
-        if (data.code == 1001) {
-            console.log("1001");
-            dispatch({
-                type: "reset",
-                data
-            });
-        }
         call(data);
     });
 }

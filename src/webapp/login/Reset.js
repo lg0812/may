@@ -7,6 +7,7 @@ import md5 from "js-md5";
 import {OverlayTrigger, Popover} from "react-bootstrap";
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
+import {email} from "../../actions/loginController"
 class ResetPanel extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ class ResetPanel extends Component {
 
     sendMail() {
         console.log(this)
-        this.props.loginAction.email(this.refs.re_username.value, data => {
+        email(this.refs.re_email.value, data => {
             console.log(data)
         });
     }

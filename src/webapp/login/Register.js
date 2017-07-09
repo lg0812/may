@@ -8,6 +8,7 @@ import md5 from "js-md5"
 import {OverlayTrigger, Popover} from "react-bootstrap"
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
+import {email} from "../../actions/loginController"
 class RegisterPanel extends Component {
 
     constructor(props) {
@@ -27,10 +28,10 @@ class RegisterPanel extends Component {
     }
 
     sendMail() {
-        console.log(this)
+        console.log(this.refs.r_email.value,">>>>>>>>>>")
         // 倒计时
         countDown(this, 60);
-        this.props.loginAction.email(this.refs.r_email.value, data => {
+        email(this.refs.r_email.value, data => {
             console.log(data)
         });
     }
@@ -61,7 +62,7 @@ class RegisterPanel extends Component {
 
 
     popoverRight(content) {
-        console.log("content------->" + content)
+        // console.log("content------->" + content)
         return (
             <Popover id="popover-positioned-scrolling-right">
                 <div className="row" style={{"width": "150px"}}>
@@ -72,7 +73,6 @@ class RegisterPanel extends Component {
     }
 
     render() {
-        console.log(this)
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">注册</div>
@@ -200,7 +200,7 @@ class Register extends Component {
         return (
             <LoginPosition>
                 <RegisterPanel {...this.props}
-                               submit_reset={handleRegister.bind(this)}/>
+                               submit_register={handleRegister.bind(this)}/>
             </LoginPosition>
         )
     }

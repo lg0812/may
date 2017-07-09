@@ -147,7 +147,7 @@ class Login extends Component {
         return (
             <LoginPosition>
                 <LoginPanel {...this.props} email={this.state.email}
-                            submit_reset={handleSubmit.bind(this)}/>
+                            submit={handleSubmit.bind(this)}/>
             </LoginPosition>)
     }
 }
