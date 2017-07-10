@@ -30,7 +30,7 @@ class LoginPosition extends Component {
 
 const handleSubmit = (username, password, this_) => {
     console.log("username: " + username, "password:" + password, this_)
-    login(username, password, (data) => {
+    this_.props.loginCtrl(username, password, (data) => {
         console.log("31--------------->", data)
         if (data.code == 1001) {
             this_.props.history.push(urls.public_index);

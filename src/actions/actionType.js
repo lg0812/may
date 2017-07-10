@@ -4,3 +4,7 @@
 export const index = {
     LOCATE: "locate"
 }
+
+export const online = {
+    userOnline: "online"
+}

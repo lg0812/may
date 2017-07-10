@@ -4,12 +4,12 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import * as loginAction from "../../actions/loginController"
 import {OverlayTrigger, Popover} from "react-bootstrap"
 import md5 from "js-md5"
 import {LoginPosition, handleSubmit} from "./index"
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
+import {login as loginCtrl} from "../../actions/loginController"
 class LoginPanel extends Component {
 
     constructor(props) {
@@ -159,10 +159,12 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    lang: state.lang,
+    lang: state.langRd.lang,
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    loginCtrl: bindActionCreators(loginCtrl, dispatch)
+})
 
 export default connect(
     mapStateToProps,

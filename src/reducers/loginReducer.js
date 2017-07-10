@@ -1,21 +1,21 @@
 /**
  * Created by LG0812 on 2017/5/9.
  */
-const initialState = [
-    {
-        data: {}
-    }
-]
+import {online} from "../actions/actionType"
+const initialState = {
+    userInfo: {},
+    loginStatus: false
+}
 
-
-
-export default function login(state = initialState, action) {
+export const login = (state = initialState, action) => {
     switch (action.type) {
-        case "login":
-        	console.log("reducers----->",action.data);
-        	
-            return state = action.data;
+        case online.userOnline:
+            return Object.assign({}, state, {
+                userInfo: JSON.parse(sessionStorage.getItem("userInfo")),
+                loginStatus: action.loginStatus
+            })
         default:
             return initialState;
     }
+    return state;
 }

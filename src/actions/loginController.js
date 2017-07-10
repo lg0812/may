@@ -2,7 +2,8 @@
  *
  */
 import {host, requestMapping} from "../config/config"
-export const login = (username, password, call) => {
+import {online} from "./actionType"
+export const login = (username, password, call) => (dispatch) => {
     console.log(username, password);
     fetch(host + requestMapping.login, {
         method: "POST",
@@ -13,6 +14,11 @@ export const login = (username, password, call) => {
         body: "email=" + username + "&" + "password=" + password
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
+        sessionStorage.setItem("userInfo", JSON.stringify(data));
+        dispatch({
+            type: online.userOnline,
+            loginStatus: true
+        });
         call(data);
     });
 }

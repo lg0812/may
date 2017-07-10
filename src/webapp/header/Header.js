@@ -61,10 +61,12 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-    lang: state.lang,
+    lang: state.langRd.lang,
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+
+})
 
 export default connect(
     mapStateToProps,
