@@ -8,6 +8,8 @@ import {OverlayTrigger, Popover} from "react-bootstrap";
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
 import {email} from "../../actions/loginController"
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 class ResetPanel extends Component {
     constructor(props) {
         super(props);
@@ -63,7 +65,7 @@ class ResetPanel extends Component {
         console.log(this, this.props.submit_reset)
         return (
             <div className="panel panel-default">
-                <div className="panel-heading">重置密码</div>
+                <div className="panel-heading">{this.props.lang.reset}</div>
                 <div className="panel-body">
                     <form>
                         <div className="p-r">
@@ -74,15 +76,16 @@ class ResetPanel extends Component {
                                 <OverlayTrigger container={this.refs.re_email_ref}
                                                 trigger={ ['focus']} placement="right"
                                                 overlay={this.popoverRight(this.state.email_err_info)}>
-                                    <input type="text" className="form-control" placeholder="邮箱" onChange={(e) => {
-                                        console.log(e);
-                                        if (e.target.value != "") {
-                                            console.log(e.target.value);
-                                            this.setState({email_err: false});
-                                        } else {
-                                            this.setState({email_err: true});
-                                        }
-                                    }}
+                                    <input type="text" className="form-control" placeholder={this.props.lang.email}
+                                           onChange={(e) => {
+                                               console.log(e);
+                                               if (e.target.value != "") {
+                                                   console.log(e.target.value);
+                                                   this.setState({email_err: false});
+                                               } else {
+                                                   this.setState({email_err: true});
+                                               }
+                                           }}
                                            ref="re_email" aria-describedby="re_basic-addon1"/>
                                 </OverlayTrigger>
                             </div>
@@ -101,15 +104,16 @@ class ResetPanel extends Component {
                                 <OverlayTrigger container={this.refs.re_password_ref}
                                                 trigger={ ['focus']} placement="right"
                                                 overlay={this.popoverRight(this.state.password_err_info)}><input
-                                    type="password" className="form-control" placeholder="密码" onChange={(e) => {
-                                    console.log(e);
-                                    if (e.target.value != "") {
-                                        console.log(e.target.value);
-                                        this.setState({password_err: false});
-                                    } else {
-                                        this.setState({password_err: true});
-                                    }
-                                }}
+                                    type="password" className="form-control" placeholder={this.props.lang.password}
+                                    onChange={(e) => {
+                                        console.log(e);
+                                        if (e.target.value != "") {
+                                            console.log(e.target.value);
+                                            this.setState({password_err: false});
+                                        } else {
+                                            this.setState({password_err: true});
+                                        }
+                                    }}
                                     ref="re_password" aria-describedby="re_basic-addon2"/></OverlayTrigger>
                             </div>
 
@@ -121,19 +125,20 @@ class ResetPanel extends Component {
                         <br/>
                         <div className="p-r">
                             <div className="input-group" ref="re_code_ref">
-                                <input type="text" className="form-control" placeholder="验证码" onChange={(e) => {
-                                    console.log(e);
-                                    if (e.target.value != "") {
-                                        console.log(e.target.value);
-                                        this.setState({re_code_err: false});
-                                    } else {
-                                        this.setState({re_code_err: true});
-                                    }
-                                }}
+                                <input type="text" className="form-control" placeholder={this.props.lang.authcode}
+                                       onChange={(e) => {
+                                           console.log(e);
+                                           if (e.target.value != "") {
+                                               console.log(e.target.value);
+                                               this.setState({re_code_err: false});
+                                           } else {
+                                               this.setState({re_code_err: true});
+                                           }
+                                       }}
                                        ref="re_code" aria-describedby="re_basic-addon3"/>
                                 <span className="input-group-btn" id="re_basic-addon3">
                                 <button className="btn btn-secondary" type="button"
-                                        onClick={this.sendMail.bind(this)}>获取验证码</button>
+                                        onClick={this.sendMail.bind(this)}>{this.props.lang.get_authcode}</button>
                                 </span>
                             </div>
 
@@ -149,13 +154,13 @@ class ResetPanel extends Component {
                     <div className="row">
                         <div className="col-xs-12">
                             <button className="btn btn-link"
-                                    onClick={() => dispatchUrls(urls.public_login, this.props.history)}>返回登录
+                                    onClick={() => dispatchUrls(urls.public_login, this.props.history)}>{this.props.lang.login}
                             </button>
                         </div>
                     </div>
                     <button className="btn btn-primary col-xs-12"
                             onClick={  () => this.submit()}>
-                        reset password
+                        {this.props.lang.reset}
                     </button>
                 </div>
             </div>
@@ -174,4 +179,15 @@ class Reset extends Component {
     }
 
 }
-export default Reset;
+
+
+const mapStateToProps = state => ({
+    lang: state.langRd.lang,
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Reset)
