@@ -23,7 +23,7 @@ body {
     position: absolute;
     top: 0px;
     z-index: 100;
-    line-height: 34px;
+    line-height: 34px !important;
     right: 0px;
     padding-right: 10px;
 }
@@ -237,3 +237,16 @@ html, body {
         margin-bottom: 150px;
     }
 }
+
+.self-hover {
+    background-color: #333744;
+}
+
+.self-hover > ul > li > ul {
+    background-color: silver;
+}
+
+.self-sub-hover > a:hover {
+    background-color: #e85347 !important;
+}
+

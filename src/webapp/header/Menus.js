@@ -31,7 +31,7 @@ class Menus extends Component {
     render() {
         console.log(this, "menus>>>>>>>>>>>>>>>>>")
         return (
-            <div className="menus border-left-0 border-top-0 border-bottom-0 text-center">
+            <div className="menus border-left-0 border-top-0 border-bottom-0 text-center self-hover">
                 <ul className="nav flex-column">
                     {
                         this.state.menuArr.map((obj, index) => {
@@ -42,7 +42,7 @@ class Menus extends Component {
                                     {
                                         obj.subList.map((item, i) => {
                                             return (
-                                                <li key={i} className="nav-item"><Link
+                                                <li key={i} className="nav-item self-sub-hover"><Link
                                                     to={item.href}> {item.name}</Link>
                                                 </li>)
                                         })

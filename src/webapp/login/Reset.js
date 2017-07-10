@@ -12,11 +12,11 @@ class ResetPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email_err_info: "邮箱号错误",
+            email_err_info: "邮箱号",
             email_err: false,
-            password_err_info: "密码错误",
+            password_err_info: "密码",
             password_err: false,
-            re_code_err_info: "验证码错误",
+            re_code_err_info: "验证码",
             re_code_err: false,
         }
     }
@@ -71,24 +71,26 @@ class ResetPanel extends Component {
                             <span className="input-group-addon" id="re_basic-addon1">
                             <span className="fa fa-user-o w14 f14"></span>
                             </span>
-                                <input type="text" className="form-control" placeholder="邮箱" onChange={(e) => {
-                                    console.log(e);
-                                    if (e.target.value != "") {
-                                        console.log(e.target.value);
-                                        this.setState({email_err: false});
-                                    } else {
-                                        this.setState({email_err: true});
-                                    }
-                                }}
-                                       ref="re_email" aria-describedby="re_basic-addon1"/>
+                                <OverlayTrigger container={this.refs.re_email_ref}
+                                                trigger={ ['focus']} placement="right"
+                                                overlay={this.popoverRight(this.state.email_err_info)}>
+                                    <input type="text" className="form-control" placeholder="邮箱" onChange={(e) => {
+                                        console.log(e);
+                                        if (e.target.value != "") {
+                                            console.log(e.target.value);
+                                            this.setState({email_err: false});
+                                        } else {
+                                            this.setState({email_err: true});
+                                        }
+                                    }}
+                                           ref="re_email" aria-describedby="re_basic-addon1"/>
+                                </OverlayTrigger>
                             </div>
-                            <OverlayTrigger container={this.refs.re_email_ref} rootClose
-                                            trigger={ ['hover', 'focus', 'click']} placement="right"
-                                            overlay={this.popoverRight(this.state.email_err_info)}>
+
                             <span
                                 className={"fa fa-exclamation-triangle pointer text-danger p-absolute-right " + (this.state.email_err ? "" : "hide")} /*onMouseEnter={}
                              onMouseLeave={}*/></span>
-                            </OverlayTrigger>
+
                         </div>
                         <br/>
                         <div className="p-r">
@@ -96,7 +98,10 @@ class ResetPanel extends Component {
                             <span className="input-group-addon" id="re_asic-addon2">
                                 <span className="fa fa-lock w14 f14"></span>
                             </span>
-                                <input type="password" className="form-control" placeholder="密码" onChange={(e) => {
+                                <OverlayTrigger container={this.refs.re_password_ref}
+                                                trigger={ ['focus']} placement="right"
+                                                overlay={this.popoverRight(this.state.password_err_info)}><input
+                                    type="password" className="form-control" placeholder="密码" onChange={(e) => {
                                     console.log(e);
                                     if (e.target.value != "") {
                                         console.log(e.target.value);
@@ -105,15 +110,13 @@ class ResetPanel extends Component {
                                         this.setState({password_err: true});
                                     }
                                 }}
-                                       ref="re_password" aria-describedby="re_basic-addon2"/>
+                                    ref="re_password" aria-describedby="re_basic-addon2"/></OverlayTrigger>
                             </div>
-                            <OverlayTrigger container={this.refs.re_password_ref} rootClose
-                                            trigger={ ['hover', 'focus', 'click']} placement="right"
-                                            overlay={this.popoverRight(this.state.password_err_info)}>
+
                             <span
                                 className={"fa fa-exclamation-triangle pointer text-danger p-absolute-right " + (this.state.password_err ? "" : "hide")} /*onMouseEnter={}
                              onMouseLeave={}*/></span>
-                            </OverlayTrigger>
+
                         </div>
                         <br/>
                         <div className="p-r">

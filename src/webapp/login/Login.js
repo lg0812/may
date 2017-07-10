@@ -18,8 +18,8 @@ class LoginPanel extends Component {
             email: this.props.email,
             email_err: false,
             password_err: false,
-            email_err_info: "邮箱号错误",
-            password_err_info: "密码错误"
+            email_err_info: "5-25个字符，请包含大写字母，小写字母，数字任意两种",
+            password_err_info: "6-20个字符"
         }
     }
 
@@ -56,10 +56,10 @@ class LoginPanel extends Component {
     }
 
     render() {
-        console.log(this)
+        console.log(this, ">>>>>>>>>>>>>>")
         return (
             <div className="panel panel-default">
-                <div className="panel-heading">登录</div>
+                <div className="panel-heading">{this.props.lang.login}</div>
                 <div className="panel-body">
                     <form>
                         <div className="p-r">
@@ -67,17 +67,18 @@ class LoginPanel extends Component {
                                         <span className="input-group-addon" id="basic-addon1">
                                             <span className="fa fa-envelope-o w14 f14"></span>
                                         </span>
-                                <input type="text" className="form-control" placeholder="请使用邮箱号登录"
-                                       value={this.state.email} onChange={this.handlerUsername.bind(this)}
-                                       ref="email" aria-describedby="basic-addon1"/>
+
+                                <OverlayTrigger container={this.refs.login_email_ref}
+                                                trigger={ ['focus']} placement="right"
+                                                overlay={this.popoverRight(this.state.email_err_info)}>
+                                    <input type="text" className="form-control" placeholder={this.props.lang.email}
+                                           value={this.state.email} onChange={this.handlerUsername.bind(this)}
+                                           ref="email" aria-describedby="basic-addon1"/></OverlayTrigger>
 
                             </div>
-                            <OverlayTrigger container={this.refs.login_email_ref} rootClose
-                                            trigger={ ['hover', 'focus', 'click']} placement="right"
-                                            overlay={this.popoverRight(this.state.email_err_info)}>
                             <span
-                                className={"fa fa-exclamation-triangle pointer text-danger p-absolute-right " + (this.state.email_err ? "" : "hide")} /*onMouseEnter={}
-                             onMouseLeave={}*/></span></OverlayTrigger>
+                                className={"fa fa-question-circle pointer text-danger p-absolute-right " + (this.state.email_err ? "" : "hide")} /*onMouseEnter={}
+                             onMouseLeave={}*/></span>
                         </div>
                         <br/>
                         <div className="p-r">
@@ -85,47 +86,51 @@ class LoginPanel extends Component {
                                         <span className="input-group-addon" id="basic-addon2">
                                         <span className="fa fa-lock w14 f14"></span>
                                         </span>
-                                <input type="password" className="form-control" placeholder="密码" onChange={(e) => {
-                                    console.log(e);
-                                    if (e.target.value != "") {
-                                        console.log(e.target.value);
-                                        this.setState({password_err: false});
-                                    } else {
-                                        this.setState({password_err: true});
-                                    }
-                                }} onKeyUp={
-                                    (e) => {
-                                        if (e.keyCode == 13) {
-                                            this.submit();
+
+                                <OverlayTrigger
+                                    container={this.refs.login_password_ref}
+                                    trigger={ ['focus']} placement="right"
+                                    overlay={this.popoverRight(this.state.password_err_info)}>
+                                    <input type="password" className="form-control"
+                                           placeholder={this.props.lang.password}
+                                           onChange={(e) => {
+                                               console.log(e);
+                                               if (e.target.value != "") {
+                                                   console.log(e.target.value);
+                                                   this.setState({password_err: false});
+                                               } else {
+                                                   this.setState({password_err: true});
+                                               }
+                                           }} onKeyUp={
+                                        (e) => {
+                                            if (e.keyCode == 13) {
+                                                this.submit();
+                                            }
                                         }
                                     }
-                                }
-                                       ref="password" aria-describedby="basic-addon2"/>
+                                           ref="password" aria-describedby="basic-addon2"/></OverlayTrigger>
                             </div>
-                            <OverlayTrigger
-                                container={this.refs.login_password_ref} rootClose
-                                trigger={ ['hover', 'focus', 'click']} placement="right"
-                                overlay={this.popoverRight(this.state.password_err_info)}>
+
                             <span
                                 className={"fa fa-exclamation-triangle pointer text-danger p-absolute-right " + (this.state.password_err ? "" : "hide")} /*onMouseEnter={}
-                             onMouseLeave={}*/></span></OverlayTrigger>
+                             onMouseLeave={}*/></span>
                         </div>
                     </form>
 
                     <div className="row">
                         <div className="col-xs-12">
                             <button className="btn btn-link"
-                                    onClick={() => dispatchUrls(urls.public_register, this.props.history)}>注册
+                                    onClick={() => dispatchUrls(urls.public_register, this.props.history)}>{this.props.lang.register}
                             </button>
                             <button className="btn btn-link pull-right"
-                                    onClick={() => dispatchUrls(urls.public_reset, this.props.history)}>忘记密码
+                                    onClick={() => dispatchUrls(urls.public_reset, this.props.history)}>{this.props.lang.forgot}
                             </button>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-xs-12">
                             <button className="btn btn-primary col-xs-12" onClick={this.submit.bind(this)}>
-                                login in
+                                {this.props.lang.login}
                             </button>
                         </div>
                     </div>
@@ -134,6 +139,7 @@ class LoginPanel extends Component {
         );
     }
 }
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -153,17 +159,15 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    login: state.login
+    lang: state.lang,
 })
 
-const mapDispatchToProps = dispatch => ({
-    loginAction: bindActionCreators(loginAction, dispatch)
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Login);
+)(Login)
 
 
 

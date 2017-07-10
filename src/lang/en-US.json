@@ -1,10 +1,18 @@
 {
   "home": "home",
-  "consoles": "console",
+  "consoles": "managerment",
   "language": "Language",
   "latest_activity": "latest activity",
   "help": "help",
   "about": "about",
   "more": "more...",
-  "login": "login"
+  "login": "login",
+  "register": "register",
+  "reset": "reset password",
+  "forgot": "forgot",
+  "email": "email",
+  "username": "nickname",
+  "password": "password",
+  "authcode": "authcode",
+  "get_authcode": "get authcode"
 }
