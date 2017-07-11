@@ -14,5 +14,6 @@
   "username": "昵称",
   "password": "密码",
   "authcode": "验证码",
-  "get_authcode": "获取验证码"
+  "get_authcode": "获取验证码",
+  "logout":"注销"
 }

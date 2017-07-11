@@ -53,12 +53,12 @@ class Header extends Component {
                         </NavDropdown>
                         {
                             this.props.loginStatus ?
-                                <NavDropdown eventKey={3} title={this.props.lang.more}
+                                <NavDropdown eventKey={3} title={this.props.loginStatus ? "用户名" : this.props.lang.login}
                                              id="basic-nav-dropdown">
                                     <MenuItem eventKey={3.1}
                                               onClick={() => dispatchUrls(urls.public_help, this.props.history)}>{this.props.lang.help}</MenuItem>
                                     <MenuItem eventKey={3.2}
-                                              onClick={() => dispatchUrls(urls.public_about, this.props.history)}>{this.props.lang.about}</MenuItem>
+                                              onClick={() => dispatchUrls(urls.public_about, this.props.history)}>{this.props.lang.logout}</MenuItem>
                                 </NavDropdown>
                                 : <NavItem eventKey={2}
                                            onClick={() => dispatchUrls(urls.public_login, this.props.history)}>{this.props.lang.login}</NavItem>

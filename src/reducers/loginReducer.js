@@ -11,8 +11,8 @@ export const login = (state = initialState, action) => {
     switch (action.type) {
         case online.userOnline:
             return Object.assign({}, state, {
-                userInfo: JSON.parse(sessionStorage.getItem("userInfo")),
-                loginStatus: action.loginStatus
+                userInfo: JSON.parse(sessionStorage.getItem("mayUserInfo")),
+                loginStatus: sessionStorage.getItem("mayLoginStatus")
             })
         default:
             return initialState;

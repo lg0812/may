@@ -2,7 +2,7 @@
  * Created by LG0812 on 2017/7/6.
  */
 import React, {Component} from 'react';
-import {LoginPosition, handleReset} from "./index"
+import {LoginPosition, handleReset, countDown} from "./index"
 import md5 from "js-md5";
 import {OverlayTrigger, Popover} from "react-bootstrap";
 import {dispatchUrls} from "../../utils/Utils"
@@ -14,6 +14,8 @@ class ResetPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            disabled: false,
+            btnText: "获取验证码",
             email_err_info: "邮箱号",
             email_err: false,
             password_err_info: "密码",
@@ -25,9 +27,12 @@ class ResetPanel extends Component {
 
     sendMail() {
         console.log(this)
-        email(this.refs.re_email.value, data => {
-            console.log(data)
-        });
+        if (this.refs.re_email.value) {
+            countDown(this, 60);
+            email(this.refs.re_email.value, data => {
+                console.log(data)
+            });
+        }
     }
 
     submit() {
@@ -138,7 +143,8 @@ class ResetPanel extends Component {
                                        ref="re_code" aria-describedby="re_basic-addon3"/>
                                 <span className="input-group-btn" id="re_basic-addon3">
                                 <button className="btn btn-secondary" type="button"
-                                        onClick={this.sendMail.bind(this)}>{this.props.lang.get_authcode}</button>
+                                        disabled={this.state.disabled}
+                                        onClick={this.sendMail.bind(this)}>{this.state.disabled ? this.state.btnText : this.props.lang.get_authcode}</button>
                                 </span>
                             </div>
 

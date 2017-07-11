@@ -32,10 +32,12 @@ class RegisterPanel extends Component {
     sendMail() {
         console.log(this.refs.r_email.value, ">>>>>>>>>>")
         // 倒计时
-        countDown(this, 60);
-        email(this.refs.r_email.value, data => {
-            console.log(data)
-        });
+        if (this.refs.r_email.value) {
+            countDown(this, 60);
+            email(this.refs.r_email.value, data => {
+                console.log(data)
+            });
+        }
     }
 
     submit = () => {
@@ -175,7 +177,7 @@ class RegisterPanel extends Component {
                                 <span className="input-group-btn" id="r_basic-addon3">
                                          <button className="btn btn-secondary" type="button"
                                                  disabled={this.state.disabled}
-                                                 onClick={this.sendMail.bind(this)}>{this.props.lang.get_authcode}</button>
+                                                 onClick={this.sendMail.bind(this)}>{this.state.disabled ? this.state.btnText : this.props.lang.get_authcode}</button>
                             </span>
                             </div>
 

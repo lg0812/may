@@ -3,6 +3,7 @@
  */
 import {host, requestMapping} from "../config/config"
 import {online} from "./actionType"
+import {setItems} from "../utils/Utils"
 export const login = (username, password, call) => (dispatch) => {
     console.log(username, password);
     fetch(host + requestMapping.login, {
@@ -14,14 +15,18 @@ export const login = (username, password, call) => (dispatch) => {
         body: "email=" + username + "&" + "password=" + password
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
-        sessionStorage.setItem("userInfo", JSON.stringify(data));
+        setItems({"mayUserInfo": JSON.stringify(data), "mayLoginStatus": true});
         dispatch({
             type: online.userOnline,
-            loginStatus: true
         });
         call(data);
     });
 }
+
+export const logout = () => (dispatch) => {
+
+}
+
 export const email = (email, call) => {
     console.log(email);
     fetch(host + requestMapping.send_email, {

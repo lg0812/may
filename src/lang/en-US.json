@@ -14,5 +14,6 @@
   "username": "nickname",
   "password": "password",
   "authcode": "authcode",
-  "get_authcode": "get authcode"
+  "get_authcode": "get authcode",
+  "logout": "logout"
 }
