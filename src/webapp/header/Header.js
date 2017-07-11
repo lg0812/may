@@ -51,8 +51,19 @@ class Header extends Component {
                             <MenuItem eventKey={3.2}
                                       onClick={() => this.props.setLocate("en_US")}>English</MenuItem>
                         </NavDropdown>
-                        <NavItem eventKey={2}
-                                 onClick={() => dispatchUrls(urls.public_login, this.props.history)}>{this.props.lang.login}</NavItem>
+                        {
+                            this.props.loginStatus ?
+                                <NavDropdown eventKey={3} title={this.props.lang.more}
+                                             id="basic-nav-dropdown">
+                                    <MenuItem eventKey={3.1}
+                                              onClick={() => dispatchUrls(urls.public_help, this.props.history)}>{this.props.lang.help}</MenuItem>
+                                    <MenuItem eventKey={3.2}
+                                              onClick={() => dispatchUrls(urls.public_about, this.props.history)}>{this.props.lang.about}</MenuItem>
+                                </NavDropdown>
+                                : <NavItem eventKey={2}
+                                           onClick={() => dispatchUrls(urls.public_login, this.props.history)}>{this.props.lang.login}</NavItem>
+
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -62,11 +73,11 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
     lang: state.langRd.lang,
+    userInfo: state.loginRd.userInfo,
+    loginStatus: state.loginRd.loginStatus
 })
 
-const mapDispatchToProps = dispatch => ({
-
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(
     mapStateToProps,
