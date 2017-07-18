@@ -4,6 +4,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {Route, BrowserRouter as Router, matchPath} from 'react-router-dom'
 import "./plugins/bootstrap-3.3.7/dist/css/bootstrap.css"
+import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
 import reducers from './reducers'
 import thunk from "redux-thunk"
 import logger from "redux-logger"

@@ -169,8 +169,16 @@ html, body {
     padding: 10px !important;
 }
 
+.pd0 {
+    padding: 0px;
+}
+
 .mg0 {
     margin: 0px;
+}
+
+.mgr10 {
+    margin-right: 10px;
 }
 
 .border-0 {
@@ -220,7 +228,6 @@ html, body {
 
 .menus {
     width: 200px;
-    border: 1px solid #292b2c;
 }
 
 .fixed-left {
@@ -242,11 +249,67 @@ html, body {
     background-color: #333744;
 }
 
-.self-hover > ul > li > ul {
-    background-color: silver;
+.fc-white a {
+    color: #ffffff !important;
 }
 
-.self-sub-hover > a:hover {
-    background-color: #e85347 !important;
+.fc-white div {
+    color: #ffffff !important;
 }
 
+.super_menus {
+    background-color: #42485B;
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.super_menus > div {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.super_menus > div:hover {
+    width: 100%;
+    height: 100%;
+    background-color: #00C1DE;
+}
+
+.self-sub-hover {
+    background-color: #333744;
+}
+
+.self-sub-hover a {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #ffffff;
+    vertical-align: middle;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.self-sub-hover:hover {
+    background-color: #4A5064;
+}
+
+.transform-rotate {
+    transition: transform 0.3s;
+}
+
+.transform-90 {
+    transform: rotate(-90deg);
+}
+
+.transform90 {
+    transform: rotate(0deg);
+}
+
+.transform-height {
+    transition: height 0.3s;
+    overflow: hidden;
+}
