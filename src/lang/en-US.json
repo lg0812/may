@@ -15,5 +15,17 @@
   "password": "password",
   "authcode": "authcode",
   "get_authcode": "get authcode",
-  "logout": "logout"
+  "logout": "logout",
+  "group1": "group1_en",
+  "group2": "group2_en",
+  "group3": "group3_en",
+  "group1_item1": "group1_item1_en",
+  "group1_item2": "group1_item2_en",
+  "group1_item3": "group1_item3_en",
+  "group2_item1": "group2_item1_en",
+  "group2_item2": "group2_item2_en",
+  "group3_item1": "group3_item1_en",
+  "group3_item2": "group3_item2_en",
+  "group3_item3": "group3_item3_en",
+  "group3_item4": "group3_item4_en"
 }

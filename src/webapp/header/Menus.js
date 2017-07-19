@@ -2,13 +2,16 @@
  * Created by LG0812 on 2017/7/4.
  */
 import React, {Component} from 'react';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {connect} from 'react-redux'
 class Menus extends Component {
     constructor(props) {
         super(props)
+        console.log(this.props.lang, ">>>>>>>>")
         this.state = {
+            lang: this.props.lang,
             menuArr: [{
-                name: "云计算基础服务",
+                name: this.state.lang.group1,
                 isOpen: false,
                 subList: [{name: "云服务器", href: "/auth/basic"}, {name: "云数据库", href: "/auth/basic1"}, {
                     name: "云数据库",
@@ -72,4 +75,20 @@ class Menus extends Component {
     }
 }
 
-export default Menus;
+
+Menus.defaultProps = {
+    lang: {}
+}
+
+const mapStateToProps = state => ({
+    lang: state.langRd.lang,
+    userInfo: state.loginRd.userInfo,
+    loginStatus: state.loginRd.loginStatus
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Menus)
