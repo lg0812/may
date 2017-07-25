@@ -1,0 +1,108 @@
+{
+  "zh_CN": [
+    {
+      "name": "group1_cn",
+      "subList": [
+        {
+          "name": "group1_item1_cn",
+          "href": "/auth/basic"
+        },
+        {
+          "name": "group1_item2_cn",
+          "href": "/auth/basic1"
+        },
+        {
+          "name": "group1_item3_cn",
+          "href": "/auth/basic1"
+        }
+      ]
+    },
+    {
+      "name": "group2_cn",
+      "subList": [
+        {
+          "name": "group2_item1_cn",
+          "href": "bbb-href"
+        },
+        {
+          "name": "group2_item2_cn",
+          "href": "bbb-href"
+        }
+      ]
+    },
+    {
+      "name": "group3_cn",
+      "subList": [
+        {
+          "name": "group3_item1_cn",
+          "href": "ccc-href"
+        },
+        {
+          "name": "group3_item2_cn",
+          "href": "ccc-href"
+        },
+        {
+          "name": "group3_item3_cn",
+          "href": "/auth/basic1"
+        },
+        {
+          "name": "group3_item4_cn",
+          "href": "/auth/basic1"
+        }
+      ]
+    }
+  ],
+  "en_US": [
+    {
+      "name": "group1_en",
+      "subList": [
+        {
+          "name": "group1_item1_en",
+          "href": "/auth/basic"
+        },
+        {
+          "name": "group1_item2_en",
+          "href": "/auth/basic1"
+        },
+        {
+          "name": "group1_item3_en",
+          "href": "/auth/basic1"
+        }
+      ]
+    },
+    {
+      "name": "group2_en",
+      "subList": [
+        {
+          "name": "group2_item1_en",
+          "href": "bbb-href"
+        },
+        {
+          "name": "group2_item1_en",
+          "href": "bbb-href"
+        }
+      ]
+    },
+    {
+      "name": "group3_en",
+      "subList": [
+        {
+          "name": "group3_item1_en",
+          "href": "ccc-href"
+        },
+        {
+          "name": "group3_item2_en",
+          "href": "ccc-href"
+        },
+        {
+          "name": "group3_item3_en",
+          "href": "/auth/basic1"
+        },
+        {
+          "name": "group3_item4_en",
+          "href": "/auth/basic1"
+        }
+      ]
+    }
+  ]
+}
