@@ -4,9 +4,11 @@
 import React, {Component} from 'react';
 import headerIcon from "../source/night.png";
 import {urls} from "../../utils/urls"
+import {bindActionCreators} from 'redux'
 import {Navbar, Nav, NavDropdown, NavItem, MenuItem} from "react-bootstrap";
 import {connect} from 'react-redux'
 import {dispatchUrls} from "../../utils/Utils"
+import {logout as logoutCtrl} from "../../actions/loginController"
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -52,13 +54,18 @@ class Header extends Component {
                                       onClick={() => this.props.setLocate("en_US")}>English</MenuItem>
                         </NavDropdown>
                         {
+                            // 通过loginStatus判断登陆状态
                             this.props.loginStatus ?
-                                <NavDropdown eventKey={3} title={this.props.loginStatus ? "用户名" : this.props.lang.login}
+                                <NavDropdown eventKey={3}
+                                             title={this.props.loginStatus == "true" ? this.props.userInfo.username : this.props.lang.login}
                                              id="basic-nav-dropdown">
                                     <MenuItem eventKey={3.1}
                                               onClick={() => dispatchUrls(urls.public_help, this.props.history)}>{this.props.lang.help}</MenuItem>
                                     <MenuItem eventKey={3.2}
-                                              onClick={() => dispatchUrls(urls.public_about, this.props.history)}>{this.props.lang.logout}</MenuItem>
+                                              onClick={() => {
+                                                  this.props.logout();
+                                                  dispatchUrls(urls.public_index, this.props.history)
+                                              }}>{this.props.lang.logout}</MenuItem>
                                 </NavDropdown>
                                 : <NavItem eventKey={2}
                                            onClick={() => dispatchUrls(urls.public_login, this.props.history)}>{this.props.lang.login}</NavItem>
@@ -77,7 +84,9 @@ const mapStateToProps = state => ({
     loginStatus: state.loginRd.loginStatus
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    logout: bindActionCreators(logoutCtrl, dispatch)
+})
 
 export default connect(
     mapStateToProps,

@@ -15,7 +15,7 @@ export const login = (username, password, call) => (dispatch) => {
         body: "email=" + username + "&" + "password=" + password
     }).then(res => res.json()).then(data => {
         console.log(data, data.code);
-        setItems({"mayUserInfo": JSON.stringify(data), "mayLoginStatus": true});
+        setItems({"mayUserInfo": JSON.stringify(data.result), "mayLoginStatus": true});
         dispatch({
             type: online.userOnline,
         });
@@ -24,7 +24,10 @@ export const login = (username, password, call) => (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-
+    window.sessionStorage.clear();
+    dispatch({
+        type: online.userOnline,
+    });
 }
 
 export const email = (email, call) => {

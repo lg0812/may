@@ -19,3 +19,16 @@ export const login = (state = initialState, action) => {
     }
     return state;
 }
+
+export const logout = (state = initialState, action) => {
+    switch (action.type) {
+        case online.userOtline:
+            return Object.assign({}, state, {
+                userInfo: {},
+                loginStatus: false
+            })
+        default:
+            return initialState;
+    }
+    return state;
+}

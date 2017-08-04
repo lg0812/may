@@ -6,5 +6,6 @@ export const index = {
 }
 
 export const online = {
-    userOnline: "online"
+    userOnline: "online",
+    userOtline: "outline"
 }
