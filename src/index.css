@@ -313,3 +313,30 @@ html, body {
     transition: height 0.3s;
     overflow: hidden;
 }
+
+/**************************index start**********************************/
+
+.index-basic {
+
+}
+
+/*空格表示层级关系，逗号表示并列关系*/
+.index-basic .head-pic {
+    width: 100px;
+    height: 120px;
+}
+
+.head-pic > img {
+    width: 100%;
+    height: 100px;
+}
+
+.head-pic > div {
+    width: 100%;
+    text-align: center;
+    color: #039;
+    cursor: pointer;
+
+}
+
+/**************************index end************************************/

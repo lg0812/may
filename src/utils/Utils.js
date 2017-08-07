@@ -20,3 +20,5 @@ export const getItems = (list) => {
     }
     return obj;
 }
+
+
