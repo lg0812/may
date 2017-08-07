@@ -7,10 +7,20 @@ import Reset from "./Reset"
 import Register from "./Register"
 import {login, register, reset} from "../../actions/loginController"
 import {urls} from "../../utils/urls"
+
+let interval;//定义一个定时器，在组件被 componentWillUnmount (卸载)的时候销毁
 class LoginPosition extends Component {
 
     constructor(props) {
         super(props);
+    }
+
+    componentWillUnmount() {
+        // 如果定时器被初始化了，销毁定时器
+        if (interval) {
+            interval = window.clearInterval(interval);
+            console.log("---------------------->", interval)
+        }
     }
 
     render() {
@@ -74,10 +84,11 @@ const handleReset = (email, password, code, this_) => {
 
 let countDown = (this_, time) => {
     this_.setState({btnText: time + "s", disabled: true});
-    let interval = window.setInterval(() => {
+    interval = window.setInterval(() => {
         time--;
         if (time == 0) {
-            window.clearInterval(interval);
+            interval = window.clearInterval(interval);
+            console.log("---------------------->", interval)
             this_.setState({btnText: "获取验证码", disabled: false});
         } else {
             this_.setState({btnText: time + 's'});
