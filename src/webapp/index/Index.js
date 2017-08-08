@@ -20,9 +20,10 @@ class Index extends Component {
                 <form className="form-horizontal index-basic">
 
                     <div className="form-group">
-                        <label className="col-sm-2 control-label">名称</label>
+                        <label className="col-sm-2 control-label" style={{paddingTop:"0"}}>名称</label>
                         <div className="col-sm-10">
-                            <input className="form-control"/>
+                            <span>abc<span className="mgl10 op-text">修改名称</span></span>
+                            <input className="form-control hide"/>
                         </div>
                     </div>
 
@@ -62,7 +63,13 @@ class Index extends Component {
     }
 
     showNewLogo(e) {
-        console.log(e.target.files[0].name)
+        let fr = new FileReader();
+        fr.readAsDataURL(e.target.files[0]);
+        console.log(e.target.files[0].name);
+        fr.onload = (frEvent) => {
+            console.log(frEvent.target.result);
+            this.setState({head_: frEvent.target.result});
+        }
     }
 }
 export default Index;

@@ -181,6 +181,10 @@ html, body {
     margin-right: 10px;
 }
 
+.mgl10 {
+    margin-left: 10px;
+}
+
 .border-0 {
     border: 0 !important;
 }
@@ -331,7 +335,7 @@ html, body {
     height: 100px;
 }
 
-.head-pic > div {
+.head-pic > div,.op-text {
     width: 100%;
     text-align: center;
     color: #039;
