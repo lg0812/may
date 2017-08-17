@@ -79,6 +79,7 @@ class Entry extends Component {
                 <div className="flex-grow0">
                     <Header {...this.props}/>
                 </div>
+                <Route path="/" exact component={App}/>
                 <Route path="/january/" exact component={App}/>
                 <Route path="/january/private/" component={Controls}/>
                 <Route path="/january/public/" component={Public}/>
