@@ -42,8 +42,8 @@ class Controls extends Component {
             <div className="flex-grow1 over-flow d-flex flex-row">
                 <Menus {...this.props.history}/>
                 <div className="w-100 over-flow-y">
-                    <Route path="/private/index" exact component={Index}/>
-                    <Route path="/private/basic" exact component={con.Basic}/>
+                    <Route path="/static/private/index" exact component={Index}/>
+                    <Route path="/static/private/basic" exact component={con.Basic}/>
                 </div>
             </div>
         )
@@ -54,15 +54,15 @@ class Public extends Component {
     render() {
         return (
             <div className="flex-grow1 over-flow d-flex flex-row">
-                <Route path="/public/index" exact component={App}/>
-                <Route path="/public/menus" exact component={Menus}/>
-                <Route path="/public/news" exact component={con.News}/>
-                <Route path="/public/help" exact component={con.Help}/>
-                <Route path="/public/about" exact component={con.About}/>
-                <Route path="/public/login" exact component={user.Login}/>
-                <Route path="/public/reset" exact component={user.Reset}/>
-                <Route path="/public/register" exact component={user.Register}/>
-                <Route path="/public/errorPage" exact component={ErrorPage}/>
+                <Route path="/static/public/index" exact component={App}/>
+                <Route path="/static/public/menus" exact component={Menus}/>
+                <Route path="/static/public/news" exact component={con.News}/>
+                <Route path="/static/public/help" exact component={con.Help}/>
+                <Route path="/static/public/about" exact component={con.About}/>
+                <Route path="/static/public/login" exact component={user.Login}/>
+                <Route path="/static/public/reset" exact component={user.Reset}/>
+                <Route path="/static/public/register" exact component={user.Register}/>
+                <Route path="/static/public/errorPage" exact component={ErrorPage}/>
             </div>)
     }
 }
@@ -80,9 +80,9 @@ class Entry extends Component {
                     <Header {...this.props}/>
                 </div>
                 <Route path="/" exact component={App}/>
-                <Route path="/private/" component={Controls}/>
-                <Route path="/public/" component={Public}/>
-                <Route path="/public/" component={Footer}></Route>
+                <Route path="/static/private/" component={Controls}/>
+                <Route path="/static/public/" component={Public}/>
+                <Route path="/static/public/" component={Footer}></Route>
             </div>
         </div>)
     }
