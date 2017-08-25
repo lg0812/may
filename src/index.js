@@ -80,6 +80,7 @@ class Entry extends Component {
                     <Header {...this.props}/>
                 </div>
                 <Route path="/" exact component={App}/>
+                <Route path="/static/" exact component={App}/>
                 <Route path="/static/private/" component={Controls}/>
                 <Route path="/static/public/" component={Public}/>
                 <Route path="/static/public/" component={Footer}></Route>
