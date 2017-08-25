@@ -4,22 +4,33 @@
 import React, {Component} from 'react';
 import head_icon from "../source/head.png";
 import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import Qr from "../../common/Qr";
 class Index extends Component {
 
 
     constructor(props) {
         super(props);
+        this.options = {
+                text:"http://www.yltfy.cn/#/static/private/index",
+                            width       : 256,
+                            height      : 256,
+                            typeNumber  : -1,
+                            correctLevel: 2,
+                            background: "#ffffff",
+                            foreground : "#000000"
+
+        }
         this.state = {
             head_: head_icon,
             edit: false,
-            userInfo: this.props.userInfo
+            userInfo: this.props.userInfo,
+            qrcoe:""
         }
     }
 
 
     render() {
-        console.log(this);
         return (
             <div style={{padding: "60px 60px 0px 60px"}}>
                 <form className="form-horizontal index-basic">
@@ -53,9 +64,11 @@ class Index extends Component {
                     <div className="form-group">
                         <label className="col-sm-2 control-label" style={{paddingTop: "0"}}>二维码</label>
                         <div className="col-sm-10">
-                            <div className="head-pic">
-                                <img src={this.state.head_}/>
-                            </div>
+                             <Qr ref="tempQr" options={this.options} args={{canvasId:"qrcode",canvasClass:"rect",returnType:true,
+                             hasLogo:true,logoPath:head_icon}}/>
+                            <button onClick={() => {
+                                this.refs.tempQr.getBase64Img();
+                            }}>下载</button> 
                         </div>
                     </div>
 
@@ -92,6 +105,7 @@ class Index extends Component {
     }
 
     editName(e, flag) {
+        console.log(Qr)
         //点击修改名字
         if (flag) {
             this.setState({edit: true});
