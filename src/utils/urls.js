@@ -20,7 +20,7 @@ const urls = {
     "public_reset": "/static/public/reset",
     "public_register": "/static/public/register",
     // "home_page_url": "http://localhost:8080/january/homepage.html",
-    "home_page_url": "http://106.14.136.160:8080/january/homepage.html"
+    "home_page_url": "http://106.14.136.160/january/homepage.html"
 }
 
 export {urls};
