@@ -2,7 +2,6 @@
  * Created by LG0812 on 2017/8/7.
  */
 import {host} from "../config/config"
-
 const formatData = (data) => {
     let str = "";
     for (let key in data) {
@@ -30,7 +29,7 @@ export const reqUtils = (params) => {
     }).then(data => {
         if (data.ok) {
             let d = data.json();
-            console.log(">>>>>",d)
+            console.log(">>>>>", d)
             return d;
         } else {
             console.log("server error!");
@@ -39,9 +38,29 @@ export const reqUtils = (params) => {
         params.success(data)
     });
 
+}
 
+
+export const reqFormUtils = (params) => {
+    // 在fetch中  multipart/form-data; 不需要设置，否则会因为没有boundary 而导致服务其返回405
+    fetch(host + params.path, {
+        method: params.method,
+        mode: "cors",
+        body: params.data
+    }).then(data => {
+        if (data.ok) {
+            let d = data.json();
+            console.log(">>>>>", d)
+            return d;
+        } else {
+            console.log("server error!");
+        }
+    }, e => console.log(e)).then(data => {
+        params.success(data)
+    });
 
 }
+
 
 
 

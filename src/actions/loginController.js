@@ -4,7 +4,7 @@
 import {host, requestMapping} from "../config/config"
 import {online} from "./actionType"
 import {setItems} from "../utils/Utils"
-import {reqUtils} from "../utils/req"
+import {reqUtils, reqFormUtils} from "../utils/req"
 export const login = (username, password, call) => (dispatch) => {
     console.log(username, password);
     // fetch(host + requestMapping.login, {
@@ -120,7 +120,9 @@ export const reset = (email, password, verification, call) => {
         path: requestMapping.reset,
         method: "POST",
         data: {
-            email: email
+            email: email,
+            password: password,
+            verification: verification
         },
         success: (data) => {
             call(data);
@@ -128,4 +130,18 @@ export const reset = (email, password, verification, call) => {
     })
 }
 
+export const updateProfile = (profile) => (dispatch) => {
+    reqFormUtils({
+        path: requestMapping.updateProfile,
+        method: "POST",
+        data: profile.formData,
+        success: (data) => {
+            profile.callback(data);
+            setItems({"mayUserInfo": JSON.stringify(data.result), "mayLoginStatus": true});
+            dispatch({
+                type: online.userOnline,
+            });
+        }
+    })
+}
 
