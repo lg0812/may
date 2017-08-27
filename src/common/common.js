@@ -22,7 +22,7 @@ export const pathSeparator = (path) => {
     if (path)
         return host + path.replace(/\\/g, function (separator) {
                 return "/";
-            }).split(/january/)[1];
+            }).split(/january\//)[1];
     else
         return path;
 }
