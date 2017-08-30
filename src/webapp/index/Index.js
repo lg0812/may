@@ -68,11 +68,10 @@ class Index extends Component {
 
                     <div className="form-group">
                         <label className="col-sm-2 control-label" style={{paddingTop: "0"}}>二维码</label>
-                        <div className="col-sm-10">
-                            <Qr ref="tempQr" options={this.options} args={{
-                                canvasId: "qrcode", canvasClass: "rect", returnType: true,
-                                hasLogo: true, logoPath: this.state.userLogo
-                            }}/>
+                        <div className="col-sm-10"><Qr ref="tempQr" options={this.options} args={{
+                            canvasId: "qrcode", canvasClass: "rect", returnType: true,
+                            hasLogo: true, logoPath: this.state.userLogo
+                        }}/>
                             <a onClick={() => {
                                 this.refs.tempQr.getBase64Img();
                             }}>下载

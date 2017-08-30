@@ -8,21 +8,65 @@ export default class Qr extends Component {
 
     constructor(props) {
         super(props);
+        this.base64String = ""
         this.state = {
-            base64String: ""
+            base64String: "",
+            update: true,
+            date: ""
         }
     }
+
 
     getBase64Img() {
         download(this.state.base64String, "qrcode.png");
     }
 
+    componentWillMount() {
+        console.log("componentWillMount")
+    }
+
+    componentWillReceiveProps() {
+
+        this.setState({
+            update: true,
+            date: new Date().getTime()
+        })
+        console.log("componentWillReceiveProps", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
+    }
+
+    shouldComponentUpdate() {
+        console.log("shouldComponentUpdate", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
+        // if (this.state.update)
+        //     return true;
+        // else
+        //     return false
+        return true;
+    }
+
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount")
+    }
+
+    componentWillUpdate() {
+        console.log("componentWillUpdate")
+    }
 
     componentDidMount() {
-        this.createQr();
+        console.log("componentDidMount", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
+        if (this.state.update)
+            this.createQr();
+
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
+        if (this.state.update)
+            this.createQr();
     }
 
     render() {
+        console.log(this)
         if (this.props.args.returnType) {
             return (
                 <div>
@@ -39,8 +83,8 @@ export default class Qr extends Component {
         }
     }
 
-    createQr() {
-        console.log("---------->")
+    createQr(c) {
+        console.log(this.props.options)
         let options = this.props.options ? this.props.options : {
             text: "http://www.yltfy.cn/#/static/private/index",
             width: 256,
@@ -80,13 +124,20 @@ export default class Qr extends Component {
             logo.onload = () => {
                 ctx.drawImage(logo, (options.width - logoWidth) / 2, (options.width - logoWidth) / 2, logoWidth, logoWidth);
                 if (this.props.args.returnType) {
-                    this.setState({"base64String": canvas.toDataURL("image/jpeg")});
+                    this.setState({"base64String": canvas.toDataURL("image/jpeg"), update: false});
+                    // this.base64String = canvas.toDataURL("image/jpeg")
+                    // c()
                 }
             }
-        } else {
+        }
+        else {
             if (this.props.args.returnType) {
-                this.setState({"base64String": canvas.toDataURL("image/jpeg")});
+                this.setState({"base64String": canvas.toDataURL("image/jpeg"), update: false});
+                // this.base64String = canvas.toDataURL("image/jpeg")
+                // c()
             }
         }
+
+
     }
 }
