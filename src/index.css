@@ -335,7 +335,7 @@ html, body {
     height: 100px;
 }
 
-.head-pic > div,.op-text {
+.head-pic > div, .op-text {
     width: 100%;
     text-align: center;
     color: #039;
@@ -343,8 +343,114 @@ html, body {
 
 }
 
-.rect{
+.rect {
     width: 256px;
     height: 256px;
 }
+
 /**************************index end************************************/
+
+.pure-tarrow {
+    position: absolute;
+    display: block;
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-color: transparent transparent rgba(0,0,0,.25);
+    border-width:0 11px 11px;
+    border-style: solid;
+}
+
+/*top是指距离三角顶部的距离*/
+.pure-tarrow:after {
+  top: 1px;
+  content: " ";
+  margin-left: -10px;
+  border-width: 0 10px 10px;
+  position: absolute;
+  display: block;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+}
+
+.pure-rarrow {
+    position: absolute;
+    display: block;
+    right: -11px;
+    top: 50%;
+    margin-top: -11px;
+    border-color: transparent transparent transparent rgba(0,0,0,.25);
+    border-width:11px 0px 11px 11px;
+    border-style: solid;
+}
+
+/*top是指距离三角顶部的距离*/
+.pure-rarrow:after {
+  right: 1px;
+  content: " ";
+  margin-top: -10px;
+  border-width: 10px 0px 10px 10px;
+  position: absolute;
+  display: block;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.pure-larrow {
+    position: absolute;
+    display: block;
+    left: -11px;
+    top: 50%;
+    margin-top: -11px;
+    border-color: transparent rgba(0,0,0,.25) transparent transparent ;
+    border-width:11px 11px 11px 0px;
+    border-style: solid;
+}
+
+/*top是指距离三角顶部的距离*/
+.pure-larrow:after {
+  left: 1px;
+  content: " ";
+  margin-top: -10px;
+  border-width: 10px 10px 10px 0px;
+  position: absolute;
+  display: block;
+  border-color: transparent  #fff transparent transparent;
+  border-style: solid;
+}
+
+.pure-barrow {
+    position: absolute;
+    display: block;
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-color:rgba(0,0,0,.25) transparent transparent;
+    border-width:11px 11px 0px;
+    border-style: solid;
+}
+
+/*top是指距离三角顶部的距离*/
+.pure-barrow:after {
+  bottom: 1px;
+  content: " ";
+  margin-left: -10px;
+  border-width: 10px 10px 0px;
+  position: absolute;
+  display: block;
+  border-color: #fff transparent transparent;
+  border-style: solid;
+}
+
+.right-arrow {
+    top: 13px;
+    border: 1px solid rgba(0,0,0,.25);
+    background: transparent;
+    height: 15px;
+    width: 15px;
+    transform: rotate(-45deg);
+    border-top: none;
+    border-left: none;
+    display: inline-block;
+}
+

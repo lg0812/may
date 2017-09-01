@@ -1,7 +1,7 @@
 {
   "zh_CN": [
     {
-      "name": "group1_cn",
+      "name": "基础服务",
       "subList": [
         {
           "name": "基本信息",
@@ -9,7 +9,7 @@
         },
         {
           "name": "group1_item2_cn",
-          "href": "/auth/basic1"
+          "href": "/static/private/basic"
         },
         {
           "name": "group1_item3_cn",
@@ -54,7 +54,7 @@
   ],
   "en_US": [
     {
-      "name": "group1_en",
+      "name": "basic service",
       "subList": [
         {
           "name": "basic information",
@@ -62,7 +62,7 @@
         },
         {
           "name": "group1_item2_en",
-          "href": "/auth/basic1"
+          "href": "/static/private/basic"
         },
         {
           "name": "group1_item3_en",
