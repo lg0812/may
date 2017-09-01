@@ -32,7 +32,7 @@ class Menus extends Component {
     render() {
         this.menuArr = menus[this.props.lang.type];
         return (
-            <div className="menus text-center self-hover" style={{"minWidth":"180px"}}>
+            <div className="menus text-center self-hover" style={{"minWidth": "180px"}}>
                 <ul className="flex-column w-100 h-100 pd0" style={{"lineHeight": "40px"}}>
                     {
                         this.menuArr.map((obj, index) => {
@@ -63,10 +63,6 @@ class Menus extends Component {
     }
 }
 
-
-Menus.defaultProps = {
-    lang: {}
-}
 
 const mapStateToProps = state => ({
     lang: state.langRd.lang,

@@ -19,8 +19,8 @@ const urls = {
     "public_login": "/static/public/login",
     "public_reset": "/static/public/reset",
     "public_register": "/static/public/register",
-    // "home_page_url": "http://localhost:8080/january/homepage.html",
-    "home_page_url": "http://www.yltfy.cn/january/homepage.html"
+    "home_page_url": "http://localhost:8081/january/homepage.html",
+    // "home_page_url": "http://www.yltfy.cn/january/homepage.html"
 }
 
 export {urls};

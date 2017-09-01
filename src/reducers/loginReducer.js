@@ -8,27 +8,27 @@ const initialState = {
 }
 
 export const login = (state = initialState, action) => {
+    var next = Object.assign({}, state);
     switch (action.type) {
         case online.userOnline:
-            return Object.assign({}, state, {
+            next = Object.assign({}, state, {
                 userInfo: JSON.parse(sessionStorage.getItem("mayUserInfo")),
-                loginStatus: sessionStorage.getItem("mayLoginStatus")
+                loginStatus: (sessionStorage.getItem("mayLoginStatus") == "true") ? true : false
             })
-        default:
-            return initialState;
+            break;
     }
-    return state;
+    return next;
 }
 
 export const logout = (state = initialState, action) => {
+    var next = Object.assign({}, state);
     switch (action.type) {
         case online.userOtline:
-            return Object.assign({}, state, {
+            next = Object.assign({}, state, {
                 userInfo: {},
                 loginStatus: false
             })
-        default:
-            return initialState;
+            break;
     }
-    return state;
+    return next;
 }

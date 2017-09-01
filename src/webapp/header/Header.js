@@ -57,7 +57,7 @@ class Header extends Component {
                             // 通过loginStatus判断登陆状态
                             this.props.loginStatus ?
                                 <NavDropdown eventKey={3}
-                                             title={this.props.loginStatus == "true" ? this.props.userInfo.username : this.props.lang.login}
+                                             title={this.props.loginStatus ? this.props.userInfo.username : this.props.lang.login}
                                              id="basic-nav-dropdown">
                                     <MenuItem eventKey={3.1}
                                               onClick={() => dispatchUrls(urls.public_help, this.props.history)}>{this.props.lang.help}</MenuItem>
