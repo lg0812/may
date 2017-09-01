@@ -19,7 +19,7 @@ import Index from "./webapp/index/Index"
 import {withRouter} from "react-router"
 import './index.css';
 import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
-import {setLocate} from "./actions/langController"
+import {setLocate,initMay} from "./actions/langController"
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 // const store = applyMiddleware(thunk, logger)(createStore)(reducers);
@@ -29,7 +29,7 @@ const store = createStore(
 )
 
 // 设置语言种类,默认从浏览器获取  语言种类
-// store.dispatch(initMay());
+store.dispatch(initMay());
 /* 在控制台打印一条有样式的文字 */
 console.log("%c yltfy %c Copyright \xa9 2016-%s",
     'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:64px;color:#00bbee;-webkit-text-fill-color:#00bbee;-webkit-text-stroke: 1px #00bbee;',
@@ -110,4 +110,7 @@ ReactDOM.render(
     </Provider >,
     document.getElementById('root')
 )
+
+
+
 

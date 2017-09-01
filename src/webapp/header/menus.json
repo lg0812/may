@@ -4,8 +4,8 @@
       "name": "group1_cn",
       "subList": [
         {
-          "name": "group1_item1_cn",
-          "href": "/auth/basic"
+          "name": "基本信息",
+          "href": "/static/private/index"
         },
         {
           "name": "group1_item2_cn",
@@ -57,8 +57,8 @@
       "name": "group1_en",
       "subList": [
         {
-          "name": "group1_item1_en",
-          "href": "/auth/basic"
+          "name": "basic information",
+          "href": "/static/private/index"
         },
         {
           "name": "group1_item2_en",
