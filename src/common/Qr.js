@@ -31,11 +31,9 @@ export default class Qr extends Component {
             update: true,
             date: new Date().getTime()
         })
-        console.log("componentWillReceiveProps", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
     }
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
         // if (this.state.update)
         //     return true;
         // else
@@ -53,14 +51,12 @@ export default class Qr extends Component {
     }
 
     componentDidMount() {
-        console.log("componentDidMount", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
         if (this.state.update)
             this.createQr();
 
     }
 
     componentDidUpdate() {
-        console.log("componentDidUpdate", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.state)
         if (this.state.update)
             this.createQr();
     }

@@ -2,7 +2,7 @@ import React, {Component}from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import {Route, HashRouter as Router, matchPath} from 'react-router-dom'
+import {Route, HashRouter as Router, matchPath, Redirect} from 'react-router-dom'
 import "./plugins/bootstrap-3.3.7/dist/css/bootstrap.css"
 import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
 import reducers from './reducers'
@@ -74,6 +74,7 @@ class Entry extends Component {
     }
 
     render() {
+        console.log(this.props.loginStatus, ">>>>>>>>>>>>>>>>>>>")
         return (<div className="h-100">
             <div className="d-flex flex-column h-100">
                 <div className="flex-grow0">
@@ -81,7 +82,9 @@ class Entry extends Component {
                 </div>
                 <Route path="/" exact component={App}/>
                 <Route path="/static/" exact component={App}/>
-                <Route path="/static/private/" component={Controls}/>
+                <Route path="/static/private/" render={() => (
+                    this.props.loginStatus ? (<Controls/>) : (<Redirect to="/static/public/login"/>)
+                )}/>
                 <Route path="/static/public/" component={Public}/>
                 <Route path="/static/public/" component={Footer}></Route>
             </div>
@@ -89,7 +92,8 @@ class Entry extends Component {
     }
 }
 const mapStateToProps = state => ({
-    lang: state.lang
+    lang: state.lang,
+    loginStatus: state.loginRd.loginStatus
 })
 
 const mapDispatchToProps = dispatch => ({
