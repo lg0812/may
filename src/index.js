@@ -101,7 +101,7 @@ const mapDispatchToProps = dispatch => ({
 })
 ReactDOM.render(
     <Provider store={store}>
-        <Router basename="/may">
+        <Router>
             <Route path="/" component={withRouter(connect(
                 mapStateToProps,
                 mapDispatchToProps

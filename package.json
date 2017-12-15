@@ -2,6 +2,7 @@
   "name": "may",
   "version": "0.1.0",
   "private": true,
+  "homepage":"may",
   "dependencies": {
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
