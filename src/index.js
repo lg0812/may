@@ -12,6 +12,7 @@ import App from './webapp/app/App';
 import Header from "./webapp/header/Header"
 import Footer from "./webapp/header/Footer"
 import ErrorPage from "./webapp/error/Error"
+import Prompt from "./webapp/prompt/prompt"
 import * as user from "./webapp/login"
 import Menus from "./webapp/header/Menus"
 import * as con from "./webapp/container"
@@ -19,7 +20,7 @@ import Index from "./webapp/index/Index"
 import {withRouter} from "react-router"
 import './index.css';
 import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
-import {setLocate,initMay} from "./actions/langController"
+import {setLocate, initMay} from "./actions/langController"
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 // const store = applyMiddleware(thunk, logger)(createStore)(reducers);
@@ -88,6 +89,7 @@ class Entry extends Component {
                 <Route path="/static/public/" component={Public}/>
                 <Route path="/static/public/" component={Footer}></Route>
             </div>
+            <Prompt {...this.props}></Prompt>
         </div>)
     }
 }

@@ -1,7 +1,7 @@
 /**
  * Created by LG0812 on 2017/7/7.
  */
-import * as langs from "../lang"
+import * as langs from "../lang/index"
 import {index} from "../actions/actionType"
 const initialState = {
     lang: langs.zh_CN

@@ -9,3 +9,8 @@ export const online = {
     userOnline: "online",
     userOtline: "outline"
 }
+
+export const promptTypes = {
+    promptLoading: "promptLoading",
+    promptSuccess: "promptLoading"
+}

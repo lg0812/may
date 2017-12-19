@@ -162,7 +162,11 @@ html, body {
 }
 
 .position-abs {
-    position: absolute;
+    position: absolute !important;
+}
+
+.position-fix {
+    position: fixed !important;
 }
 
 .pd10 {
@@ -356,21 +360,21 @@ html, body {
     top: -11px;
     left: 50%;
     margin-left: -11px;
-    border-color: transparent transparent rgba(0,0,0,.25);
-    border-width:0 11px 11px;
+    border-color: transparent transparent rgba(0, 0, 0, .25);
+    border-width: 0 11px 11px;
     border-style: solid;
 }
 
 /*top是指距离三角顶部的距离*/
 .pure-tarrow:after {
-  top: 1px;
-  content: " ";
-  margin-left: -10px;
-  border-width: 0 10px 10px;
-  position: absolute;
-  display: block;
-  border-color: transparent transparent #fff;
-  border-style: solid;
+    top: 1px;
+    content: " ";
+    margin-left: -10px;
+    border-width: 0 10px 10px;
+    position: absolute;
+    display: block;
+    border-color: transparent transparent #fff;
+    border-style: solid;
 }
 
 .pure-rarrow {
@@ -379,21 +383,21 @@ html, body {
     right: -11px;
     top: 50%;
     margin-top: -11px;
-    border-color: transparent transparent transparent rgba(0,0,0,.25);
-    border-width:11px 0px 11px 11px;
+    border-color: transparent transparent transparent rgba(0, 0, 0, .25);
+    border-width: 11px 0px 11px 11px;
     border-style: solid;
 }
 
 /*top是指距离三角顶部的距离*/
 .pure-rarrow:after {
-  right: 1px;
-  content: " ";
-  margin-top: -10px;
-  border-width: 10px 0px 10px 10px;
-  position: absolute;
-  display: block;
-  border-color: transparent transparent transparent #fff;
-  border-style: solid;
+    right: 1px;
+    content: " ";
+    margin-top: -10px;
+    border-width: 10px 0px 10px 10px;
+    position: absolute;
+    display: block;
+    border-color: transparent transparent transparent #fff;
+    border-style: solid;
 }
 
 .pure-larrow {
@@ -402,21 +406,21 @@ html, body {
     left: -11px;
     top: 50%;
     margin-top: -11px;
-    border-color: transparent rgba(0,0,0,.25) transparent transparent ;
-    border-width:11px 11px 11px 0px;
+    border-color: transparent rgba(0, 0, 0, .25) transparent transparent;
+    border-width: 11px 11px 11px 0px;
     border-style: solid;
 }
 
 /*top是指距离三角顶部的距离*/
 .pure-larrow:after {
-  left: 1px;
-  content: " ";
-  margin-top: -10px;
-  border-width: 10px 10px 10px 0px;
-  position: absolute;
-  display: block;
-  border-color: transparent  #fff transparent transparent;
-  border-style: solid;
+    left: 1px;
+    content: " ";
+    margin-top: -10px;
+    border-width: 10px 10px 10px 0px;
+    position: absolute;
+    display: block;
+    border-color: transparent #fff transparent transparent;
+    border-style: solid;
 }
 
 .pure-barrow {
@@ -425,26 +429,26 @@ html, body {
     bottom: -11px;
     left: 50%;
     margin-left: -11px;
-    border-color:rgba(0,0,0,.25) transparent transparent;
-    border-width:11px 11px 0px;
+    border-color: rgba(0, 0, 0, .25) transparent transparent;
+    border-width: 11px 11px 0px;
     border-style: solid;
 }
 
 /*top是指距离三角顶部的距离*/
 .pure-barrow:after {
-  bottom: 1px;
-  content: " ";
-  margin-left: -10px;
-  border-width: 10px 10px 0px;
-  position: absolute;
-  display: block;
-  border-color: #fff transparent transparent;
-  border-style: solid;
+    bottom: 1px;
+    content: " ";
+    margin-left: -10px;
+    border-width: 10px 10px 0px;
+    position: absolute;
+    display: block;
+    border-color: #fff transparent transparent;
+    border-style: solid;
 }
 
 .right-arrow {
     top: 13px;
-    border: 1px solid rgba(0,0,0,.25);
+    border: 1px solid rgba(0, 0, 0, .25);
     background: transparent;
     height: 15px;
     width: 15px;
@@ -454,3 +458,63 @@ html, body {
     display: inline-block;
 }
 
+.preloader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f95372;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+.preloader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #00abff;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+
+.preloader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #e7ba08;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
+.content-style {
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 4px;
+}

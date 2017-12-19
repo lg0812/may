@@ -4,9 +4,11 @@
 import React, {Component} from 'react';
 import head_icon from "../source/head.png";
 import {bindActionCreators} from 'redux'
+import {promptTypes} from "../../actions/actionType"
 import {connect} from 'react-redux';
 import Qr from "../../common/Qr";
 import {updateProfile} from "../../actions/loginController"
+import {promptOp} from "../../actions/promptController"
 import {pathSeparator} from "../../common/common"
 class Index extends Component {
 
@@ -101,6 +103,10 @@ class Index extends Component {
     }
 
     updateUserInfo() {
+        this.props.promptOps({
+            type: promptTypes.promptLoading,
+            status: true
+        });
         var formData = new FormData();
         if (this.state.logoChange)
             formData.append('userLogo', this.refs.head_fileUpload.files[0]);
@@ -109,7 +115,11 @@ class Index extends Component {
         this.props.updateProfile({
             formData: formData,
             callback: (data) => {
-                this.setState({userLogo: pathSeparator(data.result.userlogo), userInfo: data.result})
+                this.setState({userLogo: pathSeparator(data.result.userlogo), userInfo: data.result});
+                this.props.promptOps({
+                    type: promptTypes.promptLoading,
+                    status: false
+                });
             }
         });
     }
@@ -154,7 +164,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    updateProfile: bindActionCreators(updateProfile, dispatch)
+    updateProfile: bindActionCreators(updateProfile, dispatch),
+    promptOps: bindActionCreators(promptOp, dispatch)
 })
 
 export default connect(
