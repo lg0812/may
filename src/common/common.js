@@ -19,10 +19,11 @@ export const req = (params) => {
 }
 
 export const pathSeparator = (path) => {
+    console.log(path)
     if (path)
-        return host + path.replace(/\\/g, function (separator) {
+        return host.split("january")[0] + path.replace(/\\/g, function (separator) {
                 return "/";
-            }).split(/january\//)[1];
+            }).split(/webapps\//)[1];
     else
         return path;
 }
