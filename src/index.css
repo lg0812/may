@@ -147,6 +147,12 @@ html, body {
     justify-content: flex-end !important;
 }
 
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -webkit-justify-content: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
 .align-items-center {
     -webkit-box-align: center !important;
     -webkit-align-items: center !important;
@@ -515,6 +521,8 @@ html, body {
 }
 
 .content-style {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .6);
     border-radius: 4px;
+    color: #fff;
+    padding: 5px 15px;
 }

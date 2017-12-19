@@ -75,7 +75,7 @@ class Entry extends Component {
     }
 
     render() {
-        console.log(this.props.loginStatus, ">>>>>>>>>>>>>>>>>>>")
+        console.log(this.props);
         return (<div className="h-100">
             <div className="d-flex flex-column h-100">
                 <div className="flex-grow0">

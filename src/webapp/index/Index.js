@@ -116,9 +116,11 @@ class Index extends Component {
             formData: formData,
             callback: (data) => {
                 this.setState({userLogo: pathSeparator(data.result.userlogo), userInfo: data.result});
+                console.log("update  success")
                 this.props.promptOps({
-                    type: promptTypes.promptLoading,
-                    status: false
+                    type: promptTypes.promptSuccess,
+                    status: true,
+                    content:"更新成功"
                 });
             }
         });

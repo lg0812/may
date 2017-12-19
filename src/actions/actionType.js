@@ -12,5 +12,5 @@ export const online = {
 
 export const promptTypes = {
     promptLoading: "promptLoading",
-    promptSuccess: "promptLoading"
+    promptSuccess: "promptSuccess"
 }
