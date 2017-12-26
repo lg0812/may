@@ -1,6 +1,7 @@
 {
   "name": "may",
-  "version": "0.1.0",
+ 
+ "version": "0.1.0",
   "private": true,
   "dependencies": {
     "es6-promise": "^4.1.0",
