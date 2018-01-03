@@ -10,6 +10,8 @@ import {LoginPosition, handleSubmit} from "./index"
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
 import {login as loginCtrl} from "../../actions/loginController"
+import {promptOp} from "../../actions/promptController"
+import {promptTypes} from "../../actions/actionType"
 class LoginPanel extends Component {
 
     constructor(props) {
@@ -163,7 +165,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loginCtrl: bindActionCreators(loginCtrl, dispatch)
+    loginCtrl: bindActionCreators(loginCtrl, dispatch),
+    promptOps: bindActionCreators(promptOp, dispatch)
 })
 
 export default connect(
