@@ -15,7 +15,7 @@ export const setItems = (obj) => {
 
 export const getItems = (list) => {
     let obj = {};
-    for (let key of list) {
+    for (let key in list) {
         obj[key] = sessionStorage.getItem(key);
     }
     return obj;
