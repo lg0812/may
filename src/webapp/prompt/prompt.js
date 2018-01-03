@@ -13,7 +13,7 @@ class Prompt extends Component {
             </div>);
         } else if (this.props.prompt.promptType == 1) {
             return (<div className={(this.props.prompt.promptStatus ? "" : "hide ") + "position-fix w-100"}
-                         style={{left: '0px', right: '0px', bottom: '20px'}}>
+                         style={{left: '0px', right: '0px', top: '20px'}}>
                 <div className="d-flex justify-content-center">
                     <div className="content-style">{this.props.prompt.promptContent}</div>
                 </div>

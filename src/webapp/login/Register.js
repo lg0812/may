@@ -11,6 +11,8 @@ import {OverlayTrigger, Popover} from "react-bootstrap"
 import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
 import {email} from "../../actions/loginController"
+import {promptOp} from "../../actions/promptController"
+
 class RegisterPanel extends Component {
 
     constructor(props) {
@@ -219,7 +221,9 @@ const mapStateToProps = state => ({
     lang: state.langRd.lang,
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    promptOps: bindActionCreators(promptOp, dispatch)
+})
 
 export default connect(
     mapStateToProps,

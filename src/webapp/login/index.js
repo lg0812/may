@@ -7,7 +7,7 @@ import Reset from "./Reset"
 import Register from "./Register"
 import {login, register, reset} from "../../actions/loginController"
 import {urls} from "../../utils/urls"
-
+import {promptTypes} from "../../actions/actionType"
 let interval;//定义一个定时器，在组件被 componentWillUnmount (卸载)的时候销毁
 class LoginPosition extends Component {
 
@@ -55,15 +55,24 @@ const handleSubmit = (username, password, this_) => {
 const handleRegister = (name, password, email, code, this_) => {
     console.log(name, password, email, code)
     register(name, password, email, code, (data) => {
+
+        this_.props.promptOps({
+            type: promptTypes.promptSuccess,
+            status: true,
+            content:data.message
+        });
+
             console.log(data)
             if (data.code == 1001) {
-                this_.setState({type: "login", email: data.result.email})
+                this_.setState({type: "login", email: data.result.email});
+                this_.props.history.push(urls.public_login);
             }
             else if (data.code == 1008) {
                 this_.setState({code_err: true})
             } else if (data.code == 1007) {
                 this_.setState({email_err: true})
             }
+
         }
     );
 }
