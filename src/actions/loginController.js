@@ -94,7 +94,10 @@ export const register = (username, password, email, verification, call) => {
         path: requestMapping.register,
         method: "POST",
         data: {
-            email: email
+            username:username,
+            password:password,
+            email: email,
+            verification:verification
         },
         success: (data) => {
             call(data);
