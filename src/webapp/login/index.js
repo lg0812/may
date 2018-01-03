@@ -42,6 +42,11 @@ const handleSubmit = (username, password, this_) => {
     console.log("username: " + username, "password:" + password, this_)
     this_.props.loginCtrl(username, password, (data) => {
         console.log("31--------------->", data)
+        this_.props.promptOps({
+            type: promptTypes.promptSuccess,
+            status: true,
+            content:data.message
+        });
         if (data.code == 1001) {
             this_.props.history.push(urls.public_index);
         } else if (data.code == 1005) {
@@ -81,8 +86,14 @@ const handleReset = (email, password, code, this_) => {
     console.log(email, password, code)
     reset(email, password, code, data => {
         console.log(data);
+        this_.props.promptOps({
+            type: promptTypes.promptSuccess,
+            status: true,
+            content:data.message
+        });
         if (data.code == 1001) {
-            this_.setState({type: "login", email: data.result.email})
+            this_.setState({type: "login", email: data.result.email});
+            this_.props.history.push(urls.public_login);
         } else if (data.code == 1005) {
             this_.setState({email_err: true});
         } else if (data.code == 1008) {

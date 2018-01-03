@@ -66,7 +66,7 @@
         },
         {
           "name": "group1_item3_en",
-          "href": "/auth/basic1"
+          "href": "/static/private/basic1"
         }
       ]
     },
@@ -75,11 +75,11 @@
       "subList": [
         {
           "name": "group2_item1_en",
-          "href": "bbb-href"
+          "href": "/static/private/as"
         },
         {
           "name": "group2_item1_en",
-          "href": "bbb-href"
+          "href": "/static/private/sad"
         }
       ]
     },
@@ -88,19 +88,19 @@
       "subList": [
         {
           "name": "group3_item1_en",
-          "href": "ccc-href"
+          "href": "/static/private/asd"
         },
         {
           "name": "group3_item2_en",
-          "href": "ccc-href"
+          "href": "/static/private/asd"
         },
         {
           "name": "group3_item3_en",
-          "href": "/auth/basic1"
+          "href": "/static/private/asd"
         },
         {
           "name": "group3_item4_en",
-          "href": "/auth/basic1"
+          "href": "/static/private/asd"
         }
       ]
     }

@@ -12,14 +12,14 @@ import {dispatchUrls} from "../../utils/Utils"
 import {urls} from "../../utils/urls"
 import {email} from "../../actions/loginController"
 import {promptOp} from "../../actions/promptController"
-
+import {promptTypes} from "../../actions/actionType"
 class RegisterPanel extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             disabled: false,
-            btnText: "获取验证码",
+            btnText: "获取邮箱验证码",
             username_err: false,
             pasword_err: false,
             email_err: false,
@@ -38,6 +38,12 @@ class RegisterPanel extends Component {
             countDown(this, 60);
             email(this.refs.r_email.value, data => {
                 console.log(data)
+            });
+        }else{
+            this.props.promptOps({
+                type: promptTypes.promptSuccess,
+                status: true,
+                content:"请填写邮箱号"
             });
         }
     }
