@@ -49,7 +49,7 @@ class Index extends Component {
                                 className="mgl10 op-text"
                                 onClick={(e) => this.editName(e, true)}>修改名称</span></span>
                             <input ref="username_input"
-                                   value={this.props.userInfo.username ? this.props.userInfo.username : ""}
+                                   value={this.state.userInfo.username ? this.state.userInfo.username : ""}
                                    onChange={(e) => this.editName(e, false)}
                                    onBlur={(e) => this.editFinish(e)}
                                    className={"form-control " + (this.state.edit ? "" : "hide")}/>
@@ -149,9 +149,10 @@ class Index extends Component {
             }, 200);
         }
         // 触发input的onchange 事件
-        else {
+        else { console.log(e.target.value,">>>>>>>>>>>>>>>>>>>>>>>>>>");
             let temp = this.state.userInfo;
             temp.username = e.target.value;
+            console.log(temp,">>>>>>>>>>>>>>>>>>>>>>>>>>");
             this.setState({userInfo: temp});
         }
     }
