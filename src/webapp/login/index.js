@@ -48,7 +48,7 @@ const handleSubmit = (username, password, this_) => {
             content:data.message
         });
         if (data.code == 1001) {
-            this_.props.history.push(urls.public_index);
+            this_.props.history.push(urls.private_index);
         } else if (data.code == 1005) {
             this_.setState({email_err: true})
         } else if (data.code == 1006) {
