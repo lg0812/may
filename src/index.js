@@ -23,6 +23,7 @@ import "./plugins/font-awesome-4.7.0/css/font-awesome.css"
 import {setLocate, initMay} from "./actions/langController"
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import 'typeface-roboto'
 // const store = applyMiddleware(thunk, logger)(createStore)(reducers);
 const store = createStore(
     reducers,
