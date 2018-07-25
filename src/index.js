@@ -13,6 +13,7 @@ import Header from "./webapp/header/Header"
 import Footer from "./webapp/header/Footer"
 import ErrorPage from "./webapp/error/Error"
 import Prompt from "./webapp/prompt/prompt"
+import Partner from "./webapp/app/Partner"
 import * as user from "./webapp/login"
 import Menus from "./webapp/header/Menus"
 import * as con from "./webapp/container"
@@ -65,6 +66,7 @@ class Public extends Component {
                 <Route path="/static/public/reset" exact component={user.Reset}/>
                 <Route path="/static/public/register" exact component={user.Register}/>
                 <Route path="/static/public/errorPage" exact component={ErrorPage}/>
+                <Route path="/static/partner" exact component={Partner}/>
             </div>)
     }
 }

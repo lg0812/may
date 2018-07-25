@@ -2,6 +2,7 @@
  * Created by LG0812 on 2017/8/7.
  */
 import {host} from "../config/config"
+
 const formatData = (data) => {
     let str = "";
     for (let key in data) {
@@ -19,6 +20,7 @@ export const reqUtils = (params) => {
     // example
     // host:"http://106.14.136.160/january/"
     // path:"/login/login_in"   一般从config文件中的requestMapping对象中取值
+    console.log("reqUtil", params)
     fetch(host + params.path, {
         method: params.method,
         mode: "cors",

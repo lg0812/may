@@ -18,7 +18,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
-    "typeface-roboto": "0.0.45"
+    "typeface-roboto": "0.0.45",
+    "styled-components": "^2.4.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
