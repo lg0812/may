@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script charset="utf-8" src="./kindeditor-all.js"></script>
+    <script charset="utf-8" src="./lang/zh-CN.js"></script>
+</head>
+<body>
+<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+    &lt;strong&gt;HTML内容&lt;/strong&gt;
+    </textarea>
+
+<div id="aim"></div>
+<button onclick="setContent()">获取内容</button>
+
+<script>
+  var editor;
+  KindEditor.lang({
+    blockquote: '插入引用'
+  });
+
+  KindEditor.ready(function (K) {
+    editor = K.create('#editor_id', {
+      filterMode: false,
+      items: [
+        'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+        'anchor', 'link', 'unlink', '|', 'about', 'blockquote', 'code'
+      ]
+    });
+  });
+
+  function setContent() {
+    console.log(">>>>")
+    document.getElementById('aim').innerHTML = editor.html()
+  }
+</script>
+</body>
+</html>
