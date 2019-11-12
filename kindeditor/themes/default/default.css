@@ -4,6 +4,11 @@
 	width: 16px;
 	height: 16px;
 }
+.ke-icon-csslineheight {
+	background-position: 0px 0px;
+	width: 16px;
+	height: 16px;
+}
 .ke-inline-block {
 	display: -moz-inline-stack;
 	display: inline-block;
@@ -1150,3 +1155,6 @@
 	text-align: center;
 }
 
+.custom-editor-css-line-height {
+	display: inline-block;
+}

@@ -29,7 +29,7 @@ KindEditor.plugin('blockquote', function (K) {
             var type = K('.ke-code-type', dialog.div).val();
             var code = textarea.val();
             code = code.replace(/\r\n|\n/g, '<br />')
-            var html = '<div style="padding: 5px 10px; border-radius: 5px; border-left: 4px solid rgb(' + type + '); background: rgba(' + type + ', .2)" >' + code + '</div>';
+            var html = '<br/><div  style="padding: 5px 10px; border-radius: 5px; border-left: 4px solid rgb(' + type + '); background: rgba(' + type + ', .2)" >' + code + '</div><br/>';
 
             if (K.trim(code) === '') {
               alert('不能为空');
